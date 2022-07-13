@@ -1,0 +1,109 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+model User {
+  id              Int       @id @default(autoincrement())
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  username        String    @unique
+  email           String    @unique
+  password        String    @db.VarChar(255)
+  scorecards      Scorecard[]
+  profile         Profile?
+  role            Role      @default(USER)
+}
+
+model Profile {
+  id              Int       @id @default(autoincrement())
+  user            User      @relation(fields: [userId], references: [id])
+  userId          Int
+
+}
+
+model Scorecard {
+  id              Int       @default(autoincrement()) @id
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  public          Boolean   @default(true)
+  user            User      @relation(fields: [userId], references: [id])
+  userId          Int
+  title           String?
+  visitor         String?
+  home            String?
+  date            DateTime?
+  startTime       Int?
+  endTime         Int?
+  weather         String?
+  gameTime        String?
+  notes           String?
+  batterEntries   BatterEntry[]
+  pitcherEntries  PitcherEntry[]
+  sumsEntries     SumsEntry[]
+  umpireEntries   UmpireEntry[]
+}
+
+model BatterEntry {
+  id              Int       @default(autoincrement()) @id
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  scorecard       Scorecard @relation(fields: [scorecardId], references: [id])
+  scorecardId     Int
+  team            String
+  playerNumber    Int
+  player          String
+  position        String
+  atBats          Int
+  runs            Int
+  hits            Int
+  rbis            Int
+  offenseEntries  OffenseEntry[]
+}
+
+model OffenseEntry {
+  id              Int         @default(autoincrement()) @id
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  batter          BatterEntry @relation(fields: [batterId], references: [id])
+  batterId        Int
+  result          String
+}
+
+model PitcherEntry {
+  id              Int       @default(autoincrement()) @id
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  scorecard       Scorecard @relation(fields: [scorecardId], references: [id])
+  scorecardId     Int
+}
+
+model SumsEntry {
+  id              Int       @default(autoincrement()) @id
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  scorecard       Scorecard @relation(fields: [scorecardId], references: [id])
+  scorecardId     Int
+}
+
+model UmpireEntry {
+  id              Int       @default(autoincrement()) @id
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  scorecard       Scorecard @relation(fields: [scorecardId], references: [id])
+  scorecardId     Int
+}
+
+enum Role {
+  USER
+  ADMIN
+}
