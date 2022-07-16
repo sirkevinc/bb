@@ -14,7 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersResolver = void 0;
 const type_graphql_1 = require("type-graphql");
-const users_schema_js_1 = require("./users.schema.js");
+const users_schema_1 = require("./users.schema");
 let UsersResolver = class UsersResolver {
     async getUsers(ctx) {
         const result = await ctx.prisma.user.findMany();
@@ -28,24 +28,44 @@ let UsersResolver = class UsersResolver {
         });
         return result;
     }
+    async addUser(username, email, password, ctx) {
+        const result = await ctx.prisma.user.create({
+            data: {
+                username,
+                email,
+                password,
+            }
+        });
+        return result;
+    }
 };
 __decorate([
-    (0, type_graphql_1.Query)(() => [users_schema_js_1.User]),
+    (0, type_graphql_1.Query)(() => [users_schema_1.User]),
     __param(0, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], UsersResolver.prototype, "getUsers", null);
 __decorate([
-    (0, type_graphql_1.Query)(() => users_schema_js_1.User),
+    (0, type_graphql_1.Query)(() => users_schema_1.User),
     __param(0, (0, type_graphql_1.Arg)("id")),
     __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", Promise)
 ], UsersResolver.prototype, "getUser", null);
+__decorate([
+    (0, type_graphql_1.Mutation)(() => users_schema_1.User),
+    __param(0, (0, type_graphql_1.Arg)("username")),
+    __param(1, (0, type_graphql_1.Arg)("email")),
+    __param(2, (0, type_graphql_1.Arg)("password")),
+    __param(3, (0, type_graphql_1.Ctx)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, String, Object]),
+    __metadata("design:returntype", Promise)
+], UsersResolver.prototype, "addUser", null);
 UsersResolver = __decorate([
-    (0, type_graphql_1.Resolver)(() => users_schema_js_1.User)
+    (0, type_graphql_1.Resolver)(() => users_schema_1.User)
 ], UsersResolver);
 exports.UsersResolver = UsersResolver;
 //# sourceMappingURL=users.resolvers.js.map

@@ -1,18 +1,25 @@
 /* tslint:disable:max-classes-per-file */
 
 import { Field, ObjectType, InputType } from "type-graphql";
-import { User } from "../users/users.schema.js";
+import { User } from "../users/users.schema";
+import { BatterEntry } from "../entries/batterEntries/batterEntries.schema"
+import { PitcherEntry } from "../entries/pitcherEntries/pitcherEntries.schema"
+import { CatcherEntry } from "../entries/catcherEntries/catcherEntries.schema"
+import { SumsEntry } from "../entries/sumsEntries/sumsEntries.schema"
+import { UmpireEntry } from "../entries/umpireEntries/umpireEntries.schema"
 
 @ObjectType()
 export class Scorecard {
     @Field()
     id!: number
     @Field()
+    userId!: number
+    @Field()
     public!: boolean
     @Field()
     user!: User
     @Field()
-    userId!: number
+    title!: string
     @Field()
     home: string
     @Field()
@@ -29,14 +36,16 @@ export class Scorecard {
     gameTime: string
     @Field()
     notes: string
-    // @Field()
-    // batterEntries: [BatteryEntry]
-    // @Field()
-    // pitcherEntries: [PitcherEntry]
-    // @Field()
-    // sumEntries: [SumsEntry]
-    // @Field()
-    // umpireEntries: [UmpireEntry]
+    @Field()
+    batterEntries: [BatterEntry]
+    @Field()
+    pitcherEntries: [PitcherEntry]
+    @Field()
+    catcherEntries: [CatcherEntry]
+    @Field()
+    sumEntries: [SumsEntry]
+    @Field()
+    umpireEntries: [UmpireEntry]
 }
 
 @InputType()
@@ -45,6 +54,8 @@ export class ScorecardInput implements Partial<Scorecard> {
     userId!: number
     @Field()
     public!: boolean
+    @Field()
+    title: string
     @Field()
     home: string
     @Field()

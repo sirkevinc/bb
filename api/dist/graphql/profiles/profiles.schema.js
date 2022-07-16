@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProfileInput = exports.Profile = void 0;
-const users_schema_js_1 = require("../users/users.schema.js");
+const users_schema_1 = require("../users/users.schema");
 const type_graphql_1 = require("type-graphql");
 let Profile = class Profile {
 };
@@ -21,7 +21,7 @@ __decorate([
 ], Profile.prototype, "id", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
-    __metadata("design:type", users_schema_js_1.User)
+    __metadata("design:type", users_schema_1.User)
 ], Profile.prototype, "user", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),

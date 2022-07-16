@@ -1,6 +1,6 @@
 /* tslint:disable:max-classes-per-file */
 
-import { User } from '../users/users.schema.js';
+import { User } from '../users/users.schema';
 import { Field, ObjectType, InputType } from 'type-graphql';
 
 @ObjectType()

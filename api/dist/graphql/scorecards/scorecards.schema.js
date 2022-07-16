@@ -12,7 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ScorecardInput = exports.Scorecard = void 0;
 const type_graphql_1 = require("type-graphql");
-const users_schema_js_1 = require("../users/users.schema.js");
+const users_schema_1 = require("../users/users.schema");
 let Scorecard = class Scorecard {
 };
 __decorate([
@@ -21,16 +21,20 @@ __decorate([
 ], Scorecard.prototype, "id", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], Scorecard.prototype, "userId", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Boolean)
 ], Scorecard.prototype, "public", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
-    __metadata("design:type", users_schema_js_1.User)
+    __metadata("design:type", users_schema_1.User)
 ], Scorecard.prototype, "user", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
-    __metadata("design:type", Number)
-], Scorecard.prototype, "userId", void 0);
+    __metadata("design:type", String)
+], Scorecard.prototype, "title", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
@@ -63,6 +67,26 @@ __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], Scorecard.prototype, "notes", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Array)
+], Scorecard.prototype, "batterEntries", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Array)
+], Scorecard.prototype, "pitcherEntries", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Array)
+], Scorecard.prototype, "catcherEntries", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Array)
+], Scorecard.prototype, "sumEntries", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Array)
+], Scorecard.prototype, "umpireEntries", void 0);
 Scorecard = __decorate([
     (0, type_graphql_1.ObjectType)()
 ], Scorecard);
@@ -77,6 +101,10 @@ __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Boolean)
 ], ScorecardInput.prototype, "public", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", String)
+], ScorecardInput.prototype, "title", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
