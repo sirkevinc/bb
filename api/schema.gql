@@ -3,12 +3,25 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+"""
+The javascript `Date` as string. Type represents date and time as the ISO Date string.
+"""
+scalar DateTime
+
+type Profile {
+  id: Float!
+  user: User!
+  userId: Float!
+}
+
 type Query {
+  getProfile(userId: Float!): Profile!
   getUser(id: Float!): User!
   getUsers: [User!]!
 }
 
 type User {
+  createdAt: DateTime!
   email: String!
   id: Float!
   password: String!

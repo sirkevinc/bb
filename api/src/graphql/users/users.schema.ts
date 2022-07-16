@@ -8,6 +8,8 @@ export class User {
     @Field()
     id!: number
     @Field()
+    createdAt: Date
+    @Field()
     username!: string
     @Field()
     email!: string
@@ -17,7 +19,7 @@ export class User {
     role!: Role
 }
 
-@ObjectType()
+@InputType()
 export class UserInput implements Partial<User> {
     @Field()
     username!: string

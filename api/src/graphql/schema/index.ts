@@ -48,10 +48,11 @@
 
 import { buildSchema } from "type-graphql"
 import { UsersResolver } from "../users/users.resolvers.js"
+import { ProfileResolver } from "../profiles/profiles.resolvers.js"
 import "reflect-metadata";
 
 
 export const schema = buildSchema({
-    resolvers: [UsersResolver],
+    resolvers: [UsersResolver, ProfileResolver],
     emitSchemaFile: true,
 })

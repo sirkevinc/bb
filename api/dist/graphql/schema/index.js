@@ -42,9 +42,10 @@ exports.schema = void 0;
 // })
 const type_graphql_1 = require("type-graphql");
 const users_resolvers_js_1 = require("../users/users.resolvers.js");
+const profiles_resolvers_js_1 = require("../profiles/profiles.resolvers.js");
 require("reflect-metadata");
 exports.schema = (0, type_graphql_1.buildSchema)({
-    resolvers: [users_resolvers_js_1.UsersResolver],
+    resolvers: [users_resolvers_js_1.UsersResolver, profiles_resolvers_js_1.ProfileResolver],
     emitSchemaFile: true,
 });
 //# sourceMappingURL=index.js.map

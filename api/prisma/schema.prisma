@@ -42,8 +42,8 @@ model Scorecard {
   visitor         String?
   home            String?
   date            DateTime?
-  startTime       Int?
-  endTime         Int?
+  startTime       String?
+  endTime         String?
   weather         String?
   gameTime        String?
   notes           String?
@@ -51,6 +51,7 @@ model Scorecard {
   pitcherEntries  PitcherEntry[]
   sumsEntries     SumsEntry[]
   umpireEntries   UmpireEntry[]
+  catcherEntries  CatcherEntry[]
 }
 
 model BatterEntry {
@@ -61,7 +62,8 @@ model BatterEntry {
   scorecardId     Int
   team            String
   playerNumber    Int
-  player          String
+  firstName       String
+  lastName        String
   position        String
   atBats          Int
   runs            Int
@@ -76,6 +78,7 @@ model OffenseEntry {
   updatedAt       DateTime    @updatedAt
   batter          BatterEntry @relation(fields: [batterId], references: [id])
   batterId        Int
+  inning          Int
   result          String
 }
 
@@ -83,6 +86,33 @@ model PitcherEntry {
   id              Int       @default(autoincrement()) @id
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
+  number          Int
+  firstName       String
+  lastName        String
+  team            String
+  wls             Int
+  ip              Int
+  hits            Int
+  runs            Int
+  earnedRuns      Int
+  bb              Int
+  so              Int
+  hb              Int
+  bk              Int
+  tbf             Int
+  scorecard       Scorecard @relation(fields: [scorecardId], references: [id])
+  scorecardId     Int
+}
+
+model CatcherEntry {
+  id              Int       @default(autoincrement()) @id
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  number          Int
+  firstName       String
+  lastName        String
+  team            String
+  pb              Int
   scorecard       Scorecard @relation(fields: [scorecardId], references: [id])
   scorecardId     Int
 }
@@ -91,6 +121,12 @@ model SumsEntry {
   id              Int       @default(autoincrement()) @id
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
+  runs            Int
+  hits            Int
+  errors          Int
+  leftOnBase      Int
+  inning          Int
+  team            String
   scorecard       Scorecard @relation(fields: [scorecardId], references: [id])
   scorecardId     Int
 }
@@ -99,6 +135,8 @@ model UmpireEntry {
   id              Int       @default(autoincrement()) @id
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
+  name            String
+  position        String
   scorecard       Scorecard @relation(fields: [scorecardId], references: [id])
   scorecardId     Int
 }

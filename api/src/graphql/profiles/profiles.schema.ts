@@ -1,0 +1,20 @@
+/* tslint:disable:max-classes-per-file */
+
+import { User } from '../users/users.schema.js';
+import { Field, ObjectType, InputType } from 'type-graphql';
+
+@ObjectType()
+export class Profile {
+    @Field()
+    id!: number
+    @Field()
+    user?: User
+    @Field()
+    userId!: number
+}
+
+@InputType()
+export class ProfileInput implements Partial<Profile> {
+    @Field()
+    userId!: number
+}
