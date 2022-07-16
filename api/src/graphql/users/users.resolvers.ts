@@ -1,6 +1,7 @@
 import { Query, Resolver, Arg, Ctx, Mutation } from "type-graphql"
-import { User, UserInput } from "./users.schema"
+import { User, UserInput, UserMessage } from "./users.schema"
 import type { GraphQLContext } from "../../context"
+import { resourceLimits } from "worker_threads";
 
 @Resolver(() => User)
 export class UsersResolver {
@@ -20,19 +21,50 @@ export class UsersResolver {
         return result;
     }
 
+    
+
     @Mutation(() => User)
     async addUser(
-        @Arg("username") username: string,
-        @Arg("email") email: string,
-        @Arg("password") password: string,
+        // @Arg("username") username: string,
+        // @Arg("email") email: string,
+        // @Arg("password") password: string,
+        @Arg("data") newUserInput: UserInput,
         @Ctx() ctx: GraphQLContext): Promise<User> {
         const result = await ctx.prisma.user.create({
-            data: {
-                username,
-                email,
-                password,
-            }
+            data: newUserInput
         })
         return result;
     }
+
+    @Mutation(() => UserMessage)
+    async deleteUser(@Arg("userId") userId: number, @Ctx() ctx: GraphQLContext): Promise<UserMessage> {
+        try {
+            const user = await ctx.prisma.user.delete({
+                where: {
+                    id: userId
+                }
+            })
+            if (user) return { message: `${user.username}'s account successfully deleted` }
+        } catch {
+            return { message: "User deletion failed" }
+        }
+    }
 }
+
+// Future login?
+// @Query((returns) => UserWithToken)
+// async login(
+//     @Arg("email") email: string,
+//     @Arg("password") password: string,
+//     @Ctx("ctx") ctx: IContext
+// ) : Promise<UserWithToken> {
+//     const user = await this.userRepo.findOneUser({ where: { email } });
+//     const success = await compare(password, user.password);
+//     if (!success) ctx.throw(401);
+//     const token = await this.tokenRepo.createToken(user);
+
+//     return {
+//         user,
+//         token
+//     };
+// }

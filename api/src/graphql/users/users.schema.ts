@@ -18,6 +18,11 @@ export class User {
     @Field()
     role!: Role
 }
+@ObjectType()
+export class UserMessage {
+    @Field()
+    message: string
+}
 
 @InputType()
 export class UserInput implements Partial<User> {
@@ -27,6 +32,6 @@ export class UserInput implements Partial<User> {
     email!: string
     @Field()
     password!: string
-    @Field()
+    @Field({ defaultValue: 'USER' })
     role: Role
 }

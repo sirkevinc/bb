@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserInput = exports.User = void 0;
+exports.UserInput = exports.UserMessage = exports.User = void 0;
 const client_1 = require("@prisma/client");
 const type_graphql_1 = require("type-graphql");
 let User = class User {
@@ -43,6 +43,16 @@ User = __decorate([
     (0, type_graphql_1.ObjectType)()
 ], User);
 exports.User = User;
+let UserMessage = class UserMessage {
+};
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", String)
+], UserMessage.prototype, "message", void 0);
+UserMessage = __decorate([
+    (0, type_graphql_1.ObjectType)()
+], UserMessage);
+exports.UserMessage = UserMessage;
 let UserInput = class UserInput {
 };
 __decorate([
@@ -58,7 +68,7 @@ __decorate([
     __metadata("design:type", String)
 ], UserInput.prototype, "password", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ defaultValue: 'USER' }),
     __metadata("design:type", String)
 ], UserInput.prototype, "role", void 0);
 UserInput = __decorate([

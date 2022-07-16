@@ -28,15 +28,30 @@ let UsersResolver = class UsersResolver {
         });
         return result;
     }
-    async addUser(username, email, password, ctx) {
+    async addUser(
+    // @Arg("username") username: string,
+    // @Arg("email") email: string,
+    // @Arg("password") password: string,
+    newUserInput, ctx) {
         const result = await ctx.prisma.user.create({
-            data: {
-                username,
-                email,
-                password,
-            }
+            data: newUserInput
         });
         return result;
+    }
+    async deleteUser(userId, ctx) {
+        try {
+            const user = await ctx.prisma.user.delete({
+                where: {
+                    id: userId
+                }
+            });
+            if (user)
+                return { message: `${user.username}'s account successfully deleted` };
+        }
+        catch (_a) {
+            // tslint:disable-next-line:no-console
+            return { message: "User deletion failed" };
+        }
     }
 };
 __decorate([
@@ -56,14 +71,20 @@ __decorate([
 ], UsersResolver.prototype, "getUser", null);
 __decorate([
     (0, type_graphql_1.Mutation)(() => users_schema_1.User),
-    __param(0, (0, type_graphql_1.Arg)("username")),
-    __param(1, (0, type_graphql_1.Arg)("email")),
-    __param(2, (0, type_graphql_1.Arg)("password")),
-    __param(3, (0, type_graphql_1.Ctx)()),
+    __param(0, (0, type_graphql_1.Arg)("data")),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, String, Object]),
+    __metadata("design:paramtypes", [users_schema_1.UserInput, Object]),
     __metadata("design:returntype", Promise)
 ], UsersResolver.prototype, "addUser", null);
+__decorate([
+    (0, type_graphql_1.Mutation)(() => users_schema_1.UserMessage),
+    __param(0, (0, type_graphql_1.Arg)("userId")),
+    __param(1, (0, type_graphql_1.Ctx)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Object]),
+    __metadata("design:returntype", Promise)
+], UsersResolver.prototype, "deleteUser", null);
 UsersResolver = __decorate([
     (0, type_graphql_1.Resolver)(() => users_schema_1.User)
 ], UsersResolver);
