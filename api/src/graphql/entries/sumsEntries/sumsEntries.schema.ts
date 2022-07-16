@@ -1,3 +1,5 @@
+/* tslint:disable:max-classes-per-file */
+
 import { Field, ObjectType, InputType } from "type-graphql"
 
 @ObjectType()
@@ -16,7 +18,7 @@ export class SumsEntry {
     team: string
     @Field()
     scorecardId!: number
-    
+
 }
 @InputType()
 export class SumsEntryInput implements Partial<SumsEntry> {

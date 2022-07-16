@@ -1,3 +1,5 @@
+/* tslint:disable:max-classes-per-file */
+
 import { Field, ObjectType, InputType } from "type-graphql"
 
 @ObjectType()

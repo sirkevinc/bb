@@ -10,59 +10,71 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserInput = exports.User = void 0;
-const client_1 = require("@prisma/client");
+exports.CatcherEntryInput = exports.CatcherEntry = void 0;
 const type_graphql_1 = require("type-graphql");
-let User = class User {
+const scorecards_schema_1 = require("../../scorecards/scorecards.schema");
+let CatcherEntry = class CatcherEntry {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
-], User.prototype, "id", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", Date)
-], User.prototype, "createdAt", void 0);
+], CatcherEntry.prototype, "playerNumber", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], User.prototype, "username", void 0);
+], CatcherEntry.prototype, "firstName", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], User.prototype, "email", void 0);
+], CatcherEntry.prototype, "lastName", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], User.prototype, "password", void 0);
+], CatcherEntry.prototype, "team", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
-    __metadata("design:type", String)
-], User.prototype, "role", void 0);
-User = __decorate([
+    __metadata("design:type", Number)
+], CatcherEntry.prototype, "pb", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", scorecards_schema_1.Scorecard)
+], CatcherEntry.prototype, "scorecard", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], CatcherEntry.prototype, "scorecardId", void 0);
+CatcherEntry = __decorate([
     (0, type_graphql_1.ObjectType)()
-], User);
-exports.User = User;
-let UserInput = class UserInput {
+], CatcherEntry);
+exports.CatcherEntry = CatcherEntry;
+let CatcherEntryInput = class CatcherEntryInput {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
-    __metadata("design:type", String)
-], UserInput.prototype, "username", void 0);
+    __metadata("design:type", Number)
+], CatcherEntryInput.prototype, "playerNumber", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], UserInput.prototype, "email", void 0);
+], CatcherEntryInput.prototype, "firstName", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], UserInput.prototype, "password", void 0);
+], CatcherEntryInput.prototype, "lastName", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], UserInput.prototype, "role", void 0);
-UserInput = __decorate([
+], CatcherEntryInput.prototype, "team", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], CatcherEntryInput.prototype, "pb", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], CatcherEntryInput.prototype, "scorecardId", void 0);
+CatcherEntryInput = __decorate([
     (0, type_graphql_1.InputType)()
-], UserInput);
-exports.UserInput = UserInput;
-//# sourceMappingURL=users.schema.js.map
+], CatcherEntryInput);
+exports.CatcherEntryInput = CatcherEntryInput;
+//# sourceMappingURL=catcherEntries.schema.js.map

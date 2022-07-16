@@ -38,7 +38,7 @@ __decorate([
     __metadata("design:type", Number)
 ], ProfileInput.prototype, "userId", void 0);
 ProfileInput = __decorate([
-    (0, type_graphql_1.ObjectType)()
+    (0, type_graphql_1.InputType)()
 ], ProfileInput);
 exports.ProfileInput = ProfileInput;
 //# sourceMappingURL=profiles.schema.js.map

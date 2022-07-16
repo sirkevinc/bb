@@ -10,59 +10,47 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserInput = exports.User = void 0;
-const client_1 = require("@prisma/client");
+exports.OffenseEntryInput = exports.OffenseEntry = void 0;
 const type_graphql_1 = require("type-graphql");
-let User = class User {
+const batterEntries_schema_1 = require("../batterEntries/batterEntries.schema");
+let OffenseEntry = class OffenseEntry {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
-], User.prototype, "id", void 0);
+], OffenseEntry.prototype, "batterId", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
-    __metadata("design:type", Date)
-], User.prototype, "createdAt", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", String)
-], User.prototype, "username", void 0);
+    __metadata("design:type", batterEntries_schema_1.BatterEntry)
+], OffenseEntry.prototype, "batter", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], User.prototype, "email", void 0);
+], OffenseEntry.prototype, "result", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
-    __metadata("design:type", String)
-], User.prototype, "password", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", String)
-], User.prototype, "role", void 0);
-User = __decorate([
+    __metadata("design:type", Number)
+], OffenseEntry.prototype, "inning", void 0);
+OffenseEntry = __decorate([
     (0, type_graphql_1.ObjectType)()
-], User);
-exports.User = User;
-let UserInput = class UserInput {
+], OffenseEntry);
+exports.OffenseEntry = OffenseEntry;
+let OffenseEntryInput = class OffenseEntryInput {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
-    __metadata("design:type", String)
-], UserInput.prototype, "username", void 0);
+    __metadata("design:type", Number)
+], OffenseEntryInput.prototype, "batterId", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], UserInput.prototype, "email", void 0);
+], OffenseEntryInput.prototype, "result", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
-    __metadata("design:type", String)
-], UserInput.prototype, "password", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", String)
-], UserInput.prototype, "role", void 0);
-UserInput = __decorate([
+    __metadata("design:type", Number)
+], OffenseEntryInput.prototype, "inning", void 0);
+OffenseEntryInput = __decorate([
     (0, type_graphql_1.InputType)()
-], UserInput);
-exports.UserInput = UserInput;
-//# sourceMappingURL=users.schema.js.map
+], OffenseEntryInput);
+exports.OffenseEntryInput = OffenseEntryInput;
+//# sourceMappingURL=offenseEntries.schema.js.map

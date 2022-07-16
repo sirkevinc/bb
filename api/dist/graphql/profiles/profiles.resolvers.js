@@ -26,7 +26,6 @@ let ProfileResolver = class ProfileResolver {
             }
         });
         // tslint:disable-next-line:no-console
-        console.log(result);
         return result;
     }
 };

@@ -1,3 +1,5 @@
+/* tslint:disable:max-classes-per-file */
+
 import { OffenseEntry } from "../offenseEntries/offenseEntries.schema"
 import { Field, ObjectType, InputType } from 'type-graphql';
 
@@ -18,13 +20,13 @@ export class BatterEntry {
     @Field()
     atBats: number
     @Field()
-    runs: number 
+    runs: number
     @Field()
-    hits: number 
+    hits: number
     @Field()
     rbis: number
     @Field()
-    offenseEntries: [OffenseEntry] 
+    offenseEntries: [OffenseEntry]
 }
 
 @InputType()

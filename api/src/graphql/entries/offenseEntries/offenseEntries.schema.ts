@@ -1,3 +1,5 @@
+/* tslint:disable:max-classes-per-file */
+
 import { Field, ObjectType, InputType } from "type-graphql"
 import { BatterEntry } from "../batterEntries/batterEntries.schema"
 
@@ -21,5 +23,5 @@ export class OffenseEntryInput implements Partial<OffenseEntry>{
     result: string
     @Field()
     inning: number
-    
+
 }
