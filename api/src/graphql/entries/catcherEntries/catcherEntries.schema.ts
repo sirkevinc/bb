@@ -6,19 +6,17 @@ import { Scorecard } from "../../scorecards/scorecards.schema"
 @ObjectType()
 export class CatcherEntry {
     @Field()
-    playerNumber!: number
+    scorecardId: number
+    @Field()
+    playerNumber: number
     @Field()
     firstName: string
     @Field()
     lastName: string
     @Field()
-    team!: string
+    team: string
     @Field()
     pb: number
-    @Field()
-    scorecard: Scorecard
-    @Field()
-    scorecardId!: number
 }
 
 @InputType()

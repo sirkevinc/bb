@@ -3,14 +3,78 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type BatterEntry {
+  atBats: Float!
+  firstName: String!
+  hits: Float!
+  id: Float!
+  lastName: String!
+  offenseEntries: [OffenseEntry!]!
+  playerNumber: Float!
+  rbis: Float!
+  runs: Float!
+  scorecard: Scorecard!
+  scorecardId: Float!
+  team: String!
+}
+
+input BatterEntryInput {
+  atBats: Float!
+  firstName: String!
+  hits: Float!
+  lastName: String!
+  playerNumber: Float!
+  position: String!
+  rbis: Float!
+  runs: Float!
+  scorecardId: Float!
+  team: String!
+}
+
+type CatcherEntry {
+  firstName: String!
+  lastName: String!
+  pb: Float!
+  playerNumber: Float!
+  scorecardId: Float!
+  team: String!
+}
+
 """
 The javascript `Date` as string. Type represents date and time as the ISO Date string.
 """
 scalar DateTime
 
 type Mutation {
+  addBatterEntry(data: BatterEntryInput!): BatterEntry!
   addUser(data: UserInput!): User!
+  createScorecard(data: ScorecardInput!): Scorecard!
   deleteUser(userId: Float!): UserMessage!
+  editBatterEntry(batterId: Float!, data: BatterEntryInput!): BatterEntry!
+}
+
+type OffenseEntry {
+  batterId: Float!
+  inning: Float!
+  result: String!
+}
+
+type PitcherEntry {
+  bb: Float!
+  bk: Float!
+  earnedRuns: Float!
+  firstName: String!
+  hb: Float!
+  hits: Float!
+  ip: Float!
+  lastName: String!
+  playerNumber: Float!
+  runs: Float!
+  scorecardId: Float!
+  so: Float!
+  tbf: Float!
+  team: String!
+  wls: Float!
 }
 
 type Profile {
@@ -20,9 +84,63 @@ type Profile {
 }
 
 type Query {
+  getBatterEntries(scorecardId: Float!): [BatterEntry!]!
+  getBatterEntry(id: Float!): BatterEntry!
   getProfile(userId: Float!): Profile!
+  getScorecard(id: Float!): Scorecard!
+  getScorecards(userId: Float!): [Scorecard!]!
   getUser(id: Float!): User!
   getUsers: [User!]!
+}
+
+type Scorecard {
+  batterEntries: [BatterEntry!]!
+  catcherEntries: [CatcherEntry!]!
+  date: DateTime!
+  endTime: String!
+  gameTime: String!
+  home: String!
+  id: Float!
+  notes: String!
+  pitcherEntries: [PitcherEntry!]!
+  public: Boolean!
+  startTime: String!
+  sumEntries: [SumsEntry!]!
+  title: String!
+  umpireEntries: [UmpireEntry!]!
+  userId: Float!
+  visitor: String!
+  weather: String!
+}
+
+input ScorecardInput {
+  date: DateTime
+  endTime: String
+  gameTime: String
+  home: String
+  notes: String
+  public: Boolean = true
+  startTime: String
+  title: String
+  userId: Float!
+  visitor: String
+  weather: String
+}
+
+type SumsEntry {
+  errors: Float!
+  hits: Float!
+  inning: Float!
+  leftOnBase: Float!
+  runs: Float!
+  scorecardId: Float!
+  team: String!
+}
+
+type UmpireEntry {
+  name: String!
+  position: String!
+  scorecardId: Float!
 }
 
 type User {
@@ -31,6 +149,7 @@ type User {
   id: Float!
   password: String!
   role: String!
+  scorecards: [Scorecard!]!
   username: String!
 }
 

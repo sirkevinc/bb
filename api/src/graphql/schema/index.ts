@@ -47,12 +47,15 @@
 
 
 import { buildSchema } from "type-graphql"
-import { UsersResolver } from "../users/users.resolvers.js"
-import { ProfileResolver } from "../profiles/profiles.resolvers.js"
+import { UsersResolver } from "../users/users.resolvers"
+import { ProfileResolver } from "../profiles/profiles.resolvers"
+import { ScorecardsResolver } from '../scorecards/scorecards.resolvers'
+import { BatterEntryResolver } from '../entries/batterEntries/batterEntries.resolvers'
+
 import "reflect-metadata";
 
 
 export const schema = buildSchema({
-    resolvers: [UsersResolver, ProfileResolver],
+    resolvers: [UsersResolver, ProfileResolver, ScorecardsResolver, BatterEntryResolver],
     emitSchemaFile: true,
 })

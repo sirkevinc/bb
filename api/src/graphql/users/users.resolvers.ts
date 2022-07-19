@@ -1,7 +1,6 @@
 import { Query, Resolver, Arg, Ctx, Mutation } from "type-graphql"
 import { User, UserInput, UserMessage } from "./users.schema"
 import type { GraphQLContext } from "../../context"
-import { resourceLimits } from "worker_threads";
 
 @Resolver(() => User)
 export class UsersResolver {
@@ -16,12 +15,15 @@ export class UsersResolver {
         const result = await ctx.prisma.user.findUnique({
             where: {
                 id
+            },
+            include: {
+                scorecards: true
             }
         })
         return result;
     }
 
-    
+
 
     @Mutation(() => User)
     async addUser(

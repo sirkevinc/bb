@@ -12,7 +12,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PitcherEntryInput = exports.PitcherEntry = void 0;
 const type_graphql_1 = require("type-graphql");
-const scorecards_schema_1 = require("../../scorecards/scorecards.schema");
 let PitcherEntry = class PitcherEntry {
 };
 __decorate([
@@ -71,10 +70,6 @@ __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], PitcherEntry.prototype, "tbf", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", scorecards_schema_1.Scorecard)
-], PitcherEntry.prototype, "scorecard", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)

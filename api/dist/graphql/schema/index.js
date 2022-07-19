@@ -41,11 +41,13 @@ exports.schema = void 0;
 //     typeDefs
 // })
 const type_graphql_1 = require("type-graphql");
-const users_resolvers_js_1 = require("../users/users.resolvers.js");
-const profiles_resolvers_js_1 = require("../profiles/profiles.resolvers.js");
+const users_resolvers_1 = require("../users/users.resolvers");
+const profiles_resolvers_1 = require("../profiles/profiles.resolvers");
+const scorecards_resolvers_1 = require("../scorecards/scorecards.resolvers");
+const batterEntries_resolvers_1 = require("../entries/batterEntries/batterEntries.resolvers");
 require("reflect-metadata");
 exports.schema = (0, type_graphql_1.buildSchema)({
-    resolvers: [users_resolvers_js_1.UsersResolver, profiles_resolvers_js_1.ProfileResolver],
+    resolvers: [users_resolvers_1.UsersResolver, profiles_resolvers_1.ProfileResolver, scorecards_resolvers_1.ScorecardsResolver, batterEntries_resolvers_1.BatterEntryResolver],
     emitSchemaFile: true,
 });
 //# sourceMappingURL=index.js.map

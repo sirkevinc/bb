@@ -11,7 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BatterEntryInput = exports.BatterEntry = void 0;
+const offenseEntries_schema_1 = require("../offenseEntries/offenseEntries.schema");
 const type_graphql_1 = require("type-graphql");
+const scorecards_schema_1 = require("../../scorecards/scorecards.schema");
 let BatterEntry = class BatterEntry {
 };
 __decorate([
@@ -22,6 +24,10 @@ __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], BatterEntry.prototype, "scorecardId", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(() => scorecards_schema_1.Scorecard),
+    __metadata("design:type", scorecards_schema_1.Scorecard)
+], BatterEntry.prototype, "scorecard", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
@@ -55,7 +61,7 @@ __decorate([
     __metadata("design:type", Number)
 ], BatterEntry.prototype, "rbis", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)(() => [offenseEntries_schema_1.OffenseEntry]),
     __metadata("design:type", Array)
 ], BatterEntry.prototype, "offenseEntries", void 0);
 BatterEntry = __decorate([

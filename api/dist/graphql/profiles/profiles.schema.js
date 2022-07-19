@@ -20,7 +20,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Profile.prototype, "id", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)(() => users_schema_1.User),
     __metadata("design:type", users_schema_1.User)
 ], Profile.prototype, "user", void 0);
 __decorate([

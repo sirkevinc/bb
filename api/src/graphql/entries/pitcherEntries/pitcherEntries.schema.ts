@@ -6,35 +6,33 @@ import { Scorecard } from "../../scorecards/scorecards.schema"
 @ObjectType()
 export class PitcherEntry {
     @Field()
-    playerNumber!: number
+    playerNumber?: number
     @Field()
-    firstName: string
+    firstName?: string
     @Field()
-    lastName: string
+    lastName?: string
     @Field()
-    team!: string
+    team?: string
     @Field()
-    wls: number
+    wls?: number
     @Field()
-    ip: number
+    ip?: number
     @Field()
-    hits: number
+    hits?: number
     @Field()
-    runs: number
+    runs?: number
     @Field()
-    earnedRuns: number
+    earnedRuns?: number
     @Field()
-    bb: number
+    bb?: number
     @Field()
-    so: number
+    so?: number
     @Field()
-    hb: number
+    hb?: number
     @Field()
-    bk: number
+    bk?: number
     @Field()
-    tbf: number
-    @Field()
-    scorecard!: Scorecard
+    tbf?: number
     @Field()
     scorecardId!: number
 }

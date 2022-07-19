@@ -13,6 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserInput = exports.UserMessage = exports.User = void 0;
 const client_1 = require("@prisma/client");
 const type_graphql_1 = require("type-graphql");
+const scorecards_schema_1 = require("../scorecards/scorecards.schema");
 let User = class User {
 };
 __decorate([
@@ -39,6 +40,10 @@ __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], User.prototype, "role", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(() => [scorecards_schema_1.Scorecard]),
+    __metadata("design:type", Array)
+], User.prototype, "scorecards", void 0);
 User = __decorate([
     (0, type_graphql_1.ObjectType)()
 ], User);

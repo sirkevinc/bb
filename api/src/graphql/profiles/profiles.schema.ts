@@ -7,7 +7,7 @@ import { Field, ObjectType, InputType } from 'type-graphql';
 export class Profile {
     @Field()
     id!: number
-    @Field()
+    @Field(() => User)
     user?: User
     @Field()
     userId!: number

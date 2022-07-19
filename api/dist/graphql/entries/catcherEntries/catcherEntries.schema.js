@@ -12,9 +12,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CatcherEntryInput = exports.CatcherEntry = void 0;
 const type_graphql_1 = require("type-graphql");
-const scorecards_schema_1 = require("../../scorecards/scorecards.schema");
 let CatcherEntry = class CatcherEntry {
 };
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], CatcherEntry.prototype, "scorecardId", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
@@ -35,14 +38,6 @@ __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], CatcherEntry.prototype, "pb", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", scorecards_schema_1.Scorecard)
-], CatcherEntry.prototype, "scorecard", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", Number)
-], CatcherEntry.prototype, "scorecardId", void 0);
 CatcherEntry = __decorate([
     (0, type_graphql_1.ObjectType)()
 ], CatcherEntry);

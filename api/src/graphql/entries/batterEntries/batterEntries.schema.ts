@@ -2,13 +2,16 @@
 
 import { OffenseEntry } from "../offenseEntries/offenseEntries.schema"
 import { Field, ObjectType, InputType } from 'type-graphql';
+import { Scorecard } from "../../scorecards/scorecards.schema"
 
 @ObjectType()
 export class BatterEntry {
     @Field()
-    id!: number
+    id: number
     @Field()
-    scorecardId!: number
+    scorecardId: number
+    @Field(() => Scorecard)
+    scorecard?: Scorecard
     @Field()
     team: string
     @Field()
@@ -25,8 +28,8 @@ export class BatterEntry {
     hits: number
     @Field()
     rbis: number
-    @Field()
-    offenseEntries: [OffenseEntry]
+    @Field(() => [OffenseEntry])
+    offenseEntries?: OffenseEntry[]
 }
 
 @InputType()

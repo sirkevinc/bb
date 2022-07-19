@@ -2,6 +2,7 @@
 
 import { Role } from '@prisma/client';
 import { Field, ObjectType, InputType } from 'type-graphql';
+import { Scorecard } from '../scorecards/scorecards.schema'
 
 @ObjectType()
 export class User {
@@ -17,6 +18,8 @@ export class User {
     password!: string
     @Field()
     role!: Role
+    @Field(() => [Scorecard])
+    scorecards? : Scorecard[]
 }
 @ObjectType()
 export class UserMessage {

@@ -86,7 +86,7 @@ model PitcherEntry {
   id              Int       @default(autoincrement()) @id
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
-  number          Int
+  playerNumber    Int
   firstName       String
   lastName        String
   team            String
@@ -108,7 +108,7 @@ model CatcherEntry {
   id              Int       @default(autoincrement()) @id
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
-  number          Int
+  playerNumber    Int
   firstName       String
   lastName        String
   team            String

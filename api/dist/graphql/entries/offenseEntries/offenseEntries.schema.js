@@ -12,17 +12,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OffenseEntryInput = exports.OffenseEntry = void 0;
 const type_graphql_1 = require("type-graphql");
-const batterEntries_schema_1 = require("../batterEntries/batterEntries.schema");
+// import { BatterEntry } from "../batterEntries/batterEntries.schema"
 let OffenseEntry = class OffenseEntry {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], OffenseEntry.prototype, "batterId", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", batterEntries_schema_1.BatterEntry)
-], OffenseEntry.prototype, "batter", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)

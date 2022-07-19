@@ -24,6 +24,9 @@ let UsersResolver = class UsersResolver {
         const result = await ctx.prisma.user.findUnique({
             where: {
                 id
+            },
+            include: {
+                scorecards: true
             }
         });
         return result;
@@ -49,7 +52,6 @@ let UsersResolver = class UsersResolver {
                 return { message: `${user.username}'s account successfully deleted` };
         }
         catch (_a) {
-            // tslint:disable-next-line:no-console
             return { message: "User deletion failed" };
         }
     }
@@ -89,4 +91,20 @@ UsersResolver = __decorate([
     (0, type_graphql_1.Resolver)(() => users_schema_1.User)
 ], UsersResolver);
 exports.UsersResolver = UsersResolver;
+// Future login?
+// @Query((returns) => UserWithToken)
+// async login(
+//     @Arg("email") email: string,
+//     @Arg("password") password: string,
+//     @Ctx("ctx") ctx: IContext
+// ) : Promise<UserWithToken> {
+//     const user = await this.userRepo.findOneUser({ where: { email } });
+//     const success = await compare(password, user.password);
+//     if (!success) ctx.throw(401);
+//     const token = await this.tokenRepo.createToken(user);
+//     return {
+//         user,
+//         token
+//     };
+// }
 //# sourceMappingURL=users.resolvers.js.map
