@@ -6,6 +6,8 @@ import { Scorecard } from "../../scorecards/scorecards.schema"
 @ObjectType()
 export class CatcherEntry {
     @Field()
+    id: number
+    @Field()
     scorecardId: number
     @Field()
     playerNumber: number
@@ -22,14 +24,16 @@ export class CatcherEntry {
 @InputType()
 export class CatcherEntryInput implements Partial<CatcherEntry> {
     @Field()
-    playerNumber!: number
-    @Field()
+    id: number
+    @Field({ nullable: true })
+    playerNumber: number
+    @Field({ nullable: true })
     firstName: string
-    @Field()
+    @Field({ nullable: true })
     lastName: string
-    @Field()
+    @Field({ nullable: true })
     team!: string
-    @Field()
+    @Field({ nullable: true })
     pb: number
     @Field()
     scorecardId!: number

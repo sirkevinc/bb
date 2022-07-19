@@ -73,41 +73,45 @@ let BatterEntryInput = class BatterEntryInput {
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
-], BatterEntryInput.prototype, "scorecardId", void 0);
+], BatterEntryInput.prototype, "id", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], BatterEntryInput.prototype, "scorecardId", void 0);
+__decorate([
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], BatterEntryInput.prototype, "team", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], BatterEntryInput.prototype, "playerNumber", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], BatterEntryInput.prototype, "firstName", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], BatterEntryInput.prototype, "lastName", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], BatterEntryInput.prototype, "position", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], BatterEntryInput.prototype, "atBats", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], BatterEntryInput.prototype, "runs", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], BatterEntryInput.prototype, "hits", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], BatterEntryInput.prototype, "rbis", void 0);
 BatterEntryInput = __decorate([

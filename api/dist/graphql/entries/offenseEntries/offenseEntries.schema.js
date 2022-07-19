@@ -18,6 +18,10 @@ let OffenseEntry = class OffenseEntry {
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
+], OffenseEntry.prototype, "id", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
 ], OffenseEntry.prototype, "batterId", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
@@ -33,6 +37,10 @@ OffenseEntry = __decorate([
 exports.OffenseEntry = OffenseEntry;
 let OffenseEntryInput = class OffenseEntryInput {
 };
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], OffenseEntryInput.prototype, "id", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)

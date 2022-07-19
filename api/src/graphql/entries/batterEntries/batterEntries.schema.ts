@@ -35,23 +35,25 @@ export class BatterEntry {
 @InputType()
 export class BatterEntryInput implements Partial<BatterEntry> {
     @Field()
+    id: number
+    @Field()
     scorecardId!: number
-    @Field()
+    @Field({ nullable: true })
     team: string
-    @Field()
+    @Field({ nullable: true })
     playerNumber: number
-    @Field()
+    @Field({ nullable: true })
     firstName: string
-    @Field()
+    @Field({ nullable: true })
     lastName: string
-    @Field()
+    @Field({ nullable: true })
     position: string
-    @Field()
+    @Field({ nullable: true })
     atBats: number
-    @Field()
+    @Field({ nullable: true })
     runs: number
-    @Field()
+    @Field({ nullable: true })
     hits: number
-    @Field()
+    @Field({ nullable: true })
     rbis: number
 }

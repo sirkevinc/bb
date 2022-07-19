@@ -5,6 +5,8 @@ import { Field, ObjectType, InputType } from "type-graphql"
 @ObjectType()
 export class SumsEntry {
     @Field()
+    id: number
+    @Field()
     runs: number
     @Field()
     hits: number
@@ -22,18 +24,20 @@ export class SumsEntry {
 }
 @InputType()
 export class SumsEntryInput implements Partial<SumsEntry> {
-    @Field()
+    @Field({ nullable: true })
     runs: number
-    @Field()
+    @Field({ nullable: true })
     hits: number
-    @Field()
+    @Field({ nullable: true })
     errors: number
-    @Field()
+    @Field({ nullable: true })
     leftOnBase: number
-    @Field()
+    @Field({ nullable: true })
     inning: number
-    @Field()
+    @Field({ nullable: true })
     team: string
     @Field()
     scorecardId!: number
+    @Field()
+    id: number
 }

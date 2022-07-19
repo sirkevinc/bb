@@ -17,6 +17,10 @@ let CatcherEntry = class CatcherEntry {
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
+], CatcherEntry.prototype, "id", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
 ], CatcherEntry.prototype, "scorecardId", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
@@ -47,21 +51,25 @@ let CatcherEntryInput = class CatcherEntryInput {
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
+], CatcherEntryInput.prototype, "id", void 0);
+__decorate([
+    (0, type_graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", Number)
 ], CatcherEntryInput.prototype, "playerNumber", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], CatcherEntryInput.prototype, "firstName", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], CatcherEntryInput.prototype, "lastName", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], CatcherEntryInput.prototype, "team", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], CatcherEntryInput.prototype, "pb", void 0);
 __decorate([

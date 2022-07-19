@@ -96,6 +96,10 @@ let ScorecardInput = class ScorecardInput {
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
+], ScorecardInput.prototype, "id", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
 ], ScorecardInput.prototype, "userId", void 0);
 __decorate([
     (0, type_graphql_1.Field)({ defaultValue: true }),

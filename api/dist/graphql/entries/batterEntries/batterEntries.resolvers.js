@@ -31,6 +31,9 @@ let BatterEntryResolver = class BatterEntryResolver {
         const result = await ctx.prisma.batterEntry.findMany({
             where: {
                 scorecardId
+            },
+            include: {
+                offenseEntries: true
             }
         });
         return result;
@@ -41,7 +44,7 @@ let BatterEntryResolver = class BatterEntryResolver {
         });
         return result;
     }
-    async editBatterEntry(updatedBatterInput, id, ctx) {
+    async updateBatterEntry(updatedBatterInput, id, ctx) {
         const result = await ctx.prisma.batterEntry.update({
             where: {
                 id
@@ -85,7 +88,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [batterEntries_schema_1.BatterEntryInput, Number, Object]),
     __metadata("design:returntype", Promise)
-], BatterEntryResolver.prototype, "editBatterEntry", null);
+], BatterEntryResolver.prototype, "updateBatterEntry", null);
 BatterEntryResolver = __decorate([
     (0, type_graphql_1.Resolver)(() => batterEntries_schema_1.BatterEntry)
 ], BatterEntryResolver);

@@ -43,4 +43,17 @@ export class ScorecardsResolver {
             })
             return result;
         }
+
+    @Mutation(() => Scorecard)
+    async updateScorecard(
+        @Arg("data") updatedScorecardInput: ScorecardInput,
+        @Ctx() ctx: GraphQLContext): Promise<Scorecard> {
+            const result = await ctx.prisma.scorecard.update({
+                where: {
+                    id: updatedScorecardInput.id
+                },
+                data: updatedScorecardInput
+            })
+            return result;
+        }
 }

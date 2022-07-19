@@ -16,6 +16,10 @@ let UmpireEntry = class UmpireEntry {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], UmpireEntry.prototype, "id", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], UmpireEntry.prototype, "name", void 0);
 __decorate([
@@ -33,17 +37,21 @@ exports.UmpireEntry = UmpireEntry;
 let UmpireEntryInput = class UmpireEntryInput {
 };
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], UmpireEntryInput.prototype, "name", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], UmpireEntryInput.prototype, "position", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], UmpireEntryInput.prototype, "scorecardId", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], UmpireEntryInput.prototype, "id", void 0);
 UmpireEntryInput = __decorate([
     (0, type_graphql_1.InputType)()
 ], UmpireEntryInput);

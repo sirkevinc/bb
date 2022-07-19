@@ -49,6 +49,8 @@ export class Scorecard {
 @InputType()
 export class ScorecardInput implements Partial<Scorecard> {
     @Field()
+    id: number
+    @Field()
     userId!: number
     @Field({ defaultValue: true })
     public: boolean

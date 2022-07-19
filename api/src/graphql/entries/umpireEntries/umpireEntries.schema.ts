@@ -5,6 +5,8 @@ import { Field, ObjectType, InputType } from "type-graphql"
 @ObjectType()
 export class UmpireEntry {
     @Field()
+    id: number
+    @Field()
     name: string
     @Field()
     position: string
@@ -13,10 +15,12 @@ export class UmpireEntry {
 }
 @InputType()
 export class UmpireEntryInput implements Partial<UmpireEntry> {
-    @Field()
+    @Field({ nullable: true })
     name: string
-    @Field()
+    @Field({ nullable: true })
     position: string
     @Field()
     scorecardId!: number
+    @Field()
+    id: number
 }

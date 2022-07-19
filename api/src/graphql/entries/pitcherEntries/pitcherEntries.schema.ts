@@ -1,10 +1,11 @@
 /* tslint:disable:max-classes-per-file */
 
 import { Field, ObjectType, InputType } from "type-graphql"
-import { Scorecard } from "../../scorecards/scorecards.schema"
 
 @ObjectType()
 export class PitcherEntry {
+    @Field()
+    id: number
     @Field()
     playerNumber?: number
     @Field()
@@ -39,34 +40,36 @@ export class PitcherEntry {
 
 @InputType()
 export class PitcherEntryInput implements Partial<PitcherEntry> {
-    @Field()
+    @Field({ nullable: true })
     playerNumber: number
-    @Field()
+    @Field({ nullable: true })
     firstName: string
-    @Field()
+    @Field({ nullable: true })
     lastName: string
-    @Field()
+    @Field({ nullable: true })
     team: string
-    @Field()
+    @Field({ nullable: true })
     wls: number
-    @Field()
+    @Field({ nullable: true })
     ip: number
-    @Field()
+    @Field({ nullable: true })
     hits: number
-    @Field()
+    @Field({ nullable: true })
     runs: number
-    @Field()
+    @Field({ nullable: true })
     earnedRuns: number
-    @Field()
+    @Field({ nullable: true })
     bb: number
-    @Field()
+    @Field({ nullable: true })
     so: number
-    @Field()
+    @Field({ nullable: true })
     hb: number
-    @Field()
+    @Field({ nullable: true })
     bk: number
-    @Field()
+    @Field({ nullable: true })
     tbf: number
+    @Field()
+    id: number
     @Field()
     scorecardId!: number
 }

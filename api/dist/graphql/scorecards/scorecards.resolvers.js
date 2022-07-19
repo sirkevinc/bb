@@ -48,6 +48,15 @@ let ScorecardsResolver = class ScorecardsResolver {
         });
         return result;
     }
+    async updateScorecard(updatedScorecardInput, ctx) {
+        const result = await ctx.prisma.scorecard.update({
+            where: {
+                id: updatedScorecardInput.id
+            },
+            data: updatedScorecardInput
+        });
+        return result;
+    }
 };
 __decorate([
     (0, type_graphql_1.Query)(() => [scorecards_schema_1.Scorecard]),
@@ -73,6 +82,14 @@ __decorate([
     __metadata("design:paramtypes", [scorecards_schema_1.ScorecardInput, Object]),
     __metadata("design:returntype", Promise)
 ], ScorecardsResolver.prototype, "createScorecard", null);
+__decorate([
+    (0, type_graphql_1.Mutation)(() => scorecards_schema_1.Scorecard),
+    __param(0, (0, type_graphql_1.Arg)("data")),
+    __param(1, (0, type_graphql_1.Ctx)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [scorecards_schema_1.ScorecardInput, Object]),
+    __metadata("design:returntype", Promise)
+], ScorecardsResolver.prototype, "updateScorecard", null);
 ScorecardsResolver = __decorate([
     (0, type_graphql_1.Resolver)(() => scorecards_schema_1.Scorecard)
 ], ScorecardsResolver);

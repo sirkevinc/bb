@@ -17,6 +17,10 @@ let SumsEntry = class SumsEntry {
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
+], SumsEntry.prototype, "id", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
 ], SumsEntry.prototype, "runs", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
@@ -49,33 +53,37 @@ exports.SumsEntry = SumsEntry;
 let SumsEntryInput = class SumsEntryInput {
 };
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], SumsEntryInput.prototype, "runs", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], SumsEntryInput.prototype, "hits", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], SumsEntryInput.prototype, "errors", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], SumsEntryInput.prototype, "leftOnBase", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], SumsEntryInput.prototype, "inning", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], SumsEntryInput.prototype, "team", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], SumsEntryInput.prototype, "scorecardId", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], SumsEntryInput.prototype, "id", void 0);
 SumsEntryInput = __decorate([
     (0, type_graphql_1.InputType)()
 ], SumsEntryInput);

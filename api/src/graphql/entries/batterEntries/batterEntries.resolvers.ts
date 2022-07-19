@@ -22,6 +22,9 @@ export class BatterEntryResolver {
         const result = await ctx.prisma.batterEntry.findMany({
             where: {
                 scorecardId
+            },
+            include: {
+                offenseEntries: true
             }
         });
         return result;
@@ -38,7 +41,7 @@ export class BatterEntryResolver {
         }
 
     @Mutation(() => BatterEntry)
-    async editBatterEntry(
+    async updateBatterEntry(
         @Arg("data") updatedBatterInput: BatterEntryInput,
         @Arg("batterId") id: number,
         @Ctx() ctx: GraphQLContext): Promise<BatterEntry> {

@@ -19,20 +19,22 @@ type BatterEntry {
 }
 
 input BatterEntryInput {
-  atBats: Float!
-  firstName: String!
-  hits: Float!
-  lastName: String!
-  playerNumber: Float!
-  position: String!
-  rbis: Float!
-  runs: Float!
+  atBats: Float
+  firstName: String
+  hits: Float
+  id: Float!
+  lastName: String
+  playerNumber: Float
+  position: String
+  rbis: Float
+  runs: Float
   scorecardId: Float!
-  team: String!
+  team: String
 }
 
 type CatcherEntry {
   firstName: String!
+  id: Float!
   lastName: String!
   pb: Float!
   playerNumber: Float!
@@ -50,11 +52,13 @@ type Mutation {
   addUser(data: UserInput!): User!
   createScorecard(data: ScorecardInput!): Scorecard!
   deleteUser(userId: Float!): UserMessage!
-  editBatterEntry(batterId: Float!, data: BatterEntryInput!): BatterEntry!
+  updateBatterEntry(batterId: Float!, data: BatterEntryInput!): BatterEntry!
+  updateScorecard(data: ScorecardInput!): Scorecard!
 }
 
 type OffenseEntry {
   batterId: Float!
+  id: Float!
   inning: Float!
   result: String!
 }
@@ -66,6 +70,7 @@ type PitcherEntry {
   firstName: String!
   hb: Float!
   hits: Float!
+  id: Float!
   ip: Float!
   lastName: String!
   playerNumber: Float!
@@ -118,6 +123,7 @@ input ScorecardInput {
   endTime: String
   gameTime: String
   home: String
+  id: Float!
   notes: String
   public: Boolean = true
   startTime: String
@@ -130,6 +136,7 @@ input ScorecardInput {
 type SumsEntry {
   errors: Float!
   hits: Float!
+  id: Float!
   inning: Float!
   leftOnBase: Float!
   runs: Float!
@@ -138,6 +145,7 @@ type SumsEntry {
 }
 
 type UmpireEntry {
+  id: Float!
   name: String!
   position: String!
   scorecardId: Float!
