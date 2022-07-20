@@ -10,10 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BatterEntryInput = exports.BatterEntry = void 0;
-const offenseEntries_schema_1 = require("../offenseEntries/offenseEntries.schema");
+exports.BatterUpdateInput = exports.BatterCreateInput = exports.BatterEntry = void 0;
 const type_graphql_1 = require("type-graphql");
-const scorecards_schema_1 = require("../../scorecards/scorecards.schema");
+const offenseEntries_schema_1 = require("../offenseEntries/offenseEntries.schema");
 let BatterEntry = class BatterEntry {
 };
 __decorate([
@@ -24,10 +23,6 @@ __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], BatterEntry.prototype, "scorecardId", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(() => scorecards_schema_1.Scorecard),
-    __metadata("design:type", scorecards_schema_1.Scorecard)
-], BatterEntry.prototype, "scorecard", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
@@ -44,6 +39,10 @@ __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], BatterEntry.prototype, "lastName", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", String)
+], BatterEntry.prototype, "position", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
@@ -63,59 +62,65 @@ __decorate([
 __decorate([
     (0, type_graphql_1.Field)(() => [offenseEntries_schema_1.OffenseEntry]),
     __metadata("design:type", Array)
-], BatterEntry.prototype, "offenseEntries", void 0);
+], BatterEntry.prototype, "offenseEntry", void 0);
 BatterEntry = __decorate([
     (0, type_graphql_1.ObjectType)()
 ], BatterEntry);
 exports.BatterEntry = BatterEntry;
-let BatterEntryInput = class BatterEntryInput {
+let BatterCreateInput = class BatterCreateInput {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
-], BatterEntryInput.prototype, "id", void 0);
+], BatterCreateInput.prototype, "scorecardId", void 0);
+__decorate([
+    (0, type_graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], BatterCreateInput.prototype, "team", void 0);
+__decorate([
+    (0, type_graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", Number)
+], BatterCreateInput.prototype, "playerNumber", void 0);
+__decorate([
+    (0, type_graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], BatterCreateInput.prototype, "firstName", void 0);
+__decorate([
+    (0, type_graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], BatterCreateInput.prototype, "lastName", void 0);
+__decorate([
+    (0, type_graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], BatterCreateInput.prototype, "position", void 0);
+__decorate([
+    (0, type_graphql_1.Field)({ defaultValue: 0 }),
+    __metadata("design:type", Number)
+], BatterCreateInput.prototype, "atBats", void 0);
+__decorate([
+    (0, type_graphql_1.Field)({ defaultValue: 0 }),
+    __metadata("design:type", Number)
+], BatterCreateInput.prototype, "runs", void 0);
+__decorate([
+    (0, type_graphql_1.Field)({ defaultValue: 0 }),
+    __metadata("design:type", Number)
+], BatterCreateInput.prototype, "hits", void 0);
+__decorate([
+    (0, type_graphql_1.Field)({ defaultValue: 0 }),
+    __metadata("design:type", Number)
+], BatterCreateInput.prototype, "rbis", void 0);
+BatterCreateInput = __decorate([
+    (0, type_graphql_1.InputType)()
+], BatterCreateInput);
+exports.BatterCreateInput = BatterCreateInput;
+let BatterUpdateInput = class BatterUpdateInput extends BatterCreateInput {
+};
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
-], BatterEntryInput.prototype, "scorecardId", void 0);
-__decorate([
-    (0, type_graphql_1.Field)({ nullable: true }),
-    __metadata("design:type", String)
-], BatterEntryInput.prototype, "team", void 0);
-__decorate([
-    (0, type_graphql_1.Field)({ nullable: true }),
-    __metadata("design:type", Number)
-], BatterEntryInput.prototype, "playerNumber", void 0);
-__decorate([
-    (0, type_graphql_1.Field)({ nullable: true }),
-    __metadata("design:type", String)
-], BatterEntryInput.prototype, "firstName", void 0);
-__decorate([
-    (0, type_graphql_1.Field)({ nullable: true }),
-    __metadata("design:type", String)
-], BatterEntryInput.prototype, "lastName", void 0);
-__decorate([
-    (0, type_graphql_1.Field)({ nullable: true }),
-    __metadata("design:type", String)
-], BatterEntryInput.prototype, "position", void 0);
-__decorate([
-    (0, type_graphql_1.Field)({ nullable: true }),
-    __metadata("design:type", Number)
-], BatterEntryInput.prototype, "atBats", void 0);
-__decorate([
-    (0, type_graphql_1.Field)({ nullable: true }),
-    __metadata("design:type", Number)
-], BatterEntryInput.prototype, "runs", void 0);
-__decorate([
-    (0, type_graphql_1.Field)({ nullable: true }),
-    __metadata("design:type", Number)
-], BatterEntryInput.prototype, "hits", void 0);
-__decorate([
-    (0, type_graphql_1.Field)({ nullable: true }),
-    __metadata("design:type", Number)
-], BatterEntryInput.prototype, "rbis", void 0);
-BatterEntryInput = __decorate([
+], BatterUpdateInput.prototype, "id", void 0);
+BatterUpdateInput = __decorate([
     (0, type_graphql_1.InputType)()
-], BatterEntryInput);
-exports.BatterEntryInput = BatterEntryInput;
+], BatterUpdateInput);
+exports.BatterUpdateInput = BatterUpdateInput;
 //# sourceMappingURL=batterEntries.schema.js.map

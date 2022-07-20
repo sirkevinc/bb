@@ -1,7 +1,6 @@
 /* tslint:disable:max-classes-per-file */
 
 import { Field, ObjectType, InputType } from "type-graphql";
-import { User } from "../users/users.schema";
 import { BatterEntry } from "../entries/batterEntries/batterEntries.schema"
 import { PitcherEntry } from "../entries/pitcherEntries/pitcherEntries.schema"
 import { CatcherEntry } from "../entries/catcherEntries/catcherEntries.schema"

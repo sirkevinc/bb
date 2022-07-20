@@ -38,21 +38,20 @@ let BatterEntryResolver = class BatterEntryResolver {
         });
         return result;
     }
-    async addBatterEntry(newBatterInput, ctx) {
+    async createBatterEntry(newBatterInput, ctx) {
         const result = await ctx.prisma.batterEntry.create({
             data: newBatterInput
         });
         return result;
     }
-    async updateBatterEntry(updatedBatterInput, id, ctx) {
+    async updateBatterEntry(updatedBatterInput, ctx) {
         const result = await ctx.prisma.batterEntry.update({
             where: {
-                id
+                id: updatedBatterInput.id
             },
             data: updatedBatterInput
         });
         // tslint:disable-next-line:no-console
-        console.log('sldkfjslkdjf', updatedBatterInput);
         return result;
     }
 };
@@ -77,16 +76,15 @@ __decorate([
     __param(0, (0, type_graphql_1.Arg)("data")),
     __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [batterEntries_schema_1.BatterEntryInput, Object]),
+    __metadata("design:paramtypes", [batterEntries_schema_1.BatterCreateInput, Object]),
     __metadata("design:returntype", Promise)
-], BatterEntryResolver.prototype, "addBatterEntry", null);
+], BatterEntryResolver.prototype, "createBatterEntry", null);
 __decorate([
     (0, type_graphql_1.Mutation)(() => batterEntries_schema_1.BatterEntry),
     __param(0, (0, type_graphql_1.Arg)("data")),
-    __param(1, (0, type_graphql_1.Arg)("batterId")),
-    __param(2, (0, type_graphql_1.Ctx)()),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [batterEntries_schema_1.BatterEntryInput, Number, Object]),
+    __metadata("design:paramtypes", [batterEntries_schema_1.BatterUpdateInput, Object]),
     __metadata("design:returntype", Promise)
 ], BatterEntryResolver.prototype, "updateBatterEntry", null);
 BatterEntryResolver = __decorate([

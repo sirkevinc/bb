@@ -1,7 +1,6 @@
 /* tslint:disable:max-classes-per-file */
 
 import { Field, ObjectType, InputType } from "type-graphql"
-import { Scorecard } from "../../scorecards/scorecards.schema"
 
 @ObjectType()
 export class CatcherEntry {

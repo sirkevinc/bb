@@ -3,31 +3,44 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+input BatterCreateInput {
+  atBats: Float = 0
+  firstName: String
+  hits: Float = 0
+  lastName: String
+  playerNumber: Float
+  position: String
+  rbis: Float = 0
+  runs: Float = 0
+  scorecardId: Float!
+  team: String
+}
+
 type BatterEntry {
   atBats: Float!
   firstName: String!
   hits: Float!
   id: Float!
   lastName: String!
-  offenseEntries: [OffenseEntry!]!
+  offenseEntry: [OffenseEntry!]!
   playerNumber: Float!
+  position: String!
   rbis: Float!
   runs: Float!
-  scorecard: Scorecard!
   scorecardId: Float!
   team: String!
 }
 
-input BatterEntryInput {
-  atBats: Float
+input BatterUpdateInput {
+  atBats: Float = 0
   firstName: String
-  hits: Float
+  hits: Float = 0
   id: Float!
   lastName: String
   playerNumber: Float
   position: String
-  rbis: Float
-  runs: Float
+  rbis: Float = 0
+  runs: Float = 0
   scorecardId: Float!
   team: String
 }
@@ -48,11 +61,11 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 scalar DateTime
 
 type Mutation {
-  addBatterEntry(data: BatterEntryInput!): BatterEntry!
-  addUser(data: UserInput!): User!
+  createBatterEntry(data: BatterCreateInput!): BatterEntry!
   createScorecard(data: ScorecardInput!): Scorecard!
+  createUser(data: UserInput!): User!
   deleteUser(userId: Float!): UserMessage!
-  updateBatterEntry(batterId: Float!, data: BatterEntryInput!): BatterEntry!
+  updateBatterEntry(data: BatterUpdateInput!): BatterEntry!
   updateScorecard(data: ScorecardInput!): Scorecard!
 }
 

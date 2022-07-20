@@ -12,7 +12,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OffenseEntryInput = exports.OffenseEntry = void 0;
 const type_graphql_1 = require("type-graphql");
-// import { BatterEntry } from "../batterEntries/batterEntries.schema"
 let OffenseEntry = class OffenseEntry {
 };
 __decorate([

@@ -21,6 +21,13 @@ let ScorecardsResolver = class ScorecardsResolver {
             where: {
                 userId
             },
+            include: {
+                batterEntries: true,
+                pitcherEntries: true,
+                catcherEntries: true,
+                sumsEntries: true,
+                umpireEntries: true
+            },
             orderBy: {
                 date: 'desc'
             }

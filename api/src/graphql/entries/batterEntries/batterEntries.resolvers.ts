@@ -1,5 +1,5 @@
 import { Query, Resolver, Arg, Ctx, Mutation } from "type-graphql"
-import { BatterEntry, BatterEntryInput } from "../batterEntries/batterEntries.schema"
+import { BatterEntry, BatterCreateInput, BatterUpdateInput } from "../batterEntries/batterEntries.schema"
 import { GraphQLContext } from "../../../context"
 
 @Resolver(() => BatterEntry)
@@ -31,8 +31,8 @@ export class BatterEntryResolver {
     }
 
     @Mutation(() => BatterEntry)
-    async addBatterEntry(
-        @Arg("data") newBatterInput: BatterEntryInput,
+    async createBatterEntry(
+        @Arg("data") newBatterInput: BatterCreateInput,
         @Ctx() ctx: GraphQLContext): Promise<BatterEntry> {
             const result = await ctx.prisma.batterEntry.create({
                 data: newBatterInput
@@ -42,17 +42,15 @@ export class BatterEntryResolver {
 
     @Mutation(() => BatterEntry)
     async updateBatterEntry(
-        @Arg("data") updatedBatterInput: BatterEntryInput,
-        @Arg("batterId") id: number,
+        @Arg("data") updatedBatterInput: BatterUpdateInput,
         @Ctx() ctx: GraphQLContext): Promise<BatterEntry> {
             const result = await ctx.prisma.batterEntry.update({
                 where: {
-                    id
+                    id: updatedBatterInput.id
                 },
                 data: updatedBatterInput
             })
             // tslint:disable-next-line:no-console
-            console.log('sldkfjslkdjf', updatedBatterInput)
             return result;
         }
 }

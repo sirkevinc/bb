@@ -31,7 +31,7 @@ let UsersResolver = class UsersResolver {
         });
         return result;
     }
-    async addUser(
+    async createUser(
     // @Arg("username") username: string,
     // @Arg("email") email: string,
     // @Arg("password") password: string,
@@ -78,7 +78,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [users_schema_1.UserInput, Object]),
     __metadata("design:returntype", Promise)
-], UsersResolver.prototype, "addUser", null);
+], UsersResolver.prototype, "createUser", null);
 __decorate([
     (0, type_graphql_1.Mutation)(() => users_schema_1.UserMessage),
     __param(0, (0, type_graphql_1.Arg)("userId")),

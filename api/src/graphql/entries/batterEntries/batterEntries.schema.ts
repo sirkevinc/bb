@@ -1,43 +1,40 @@
 /* tslint:disable:max-classes-per-file */
 
-import { OffenseEntry } from "../offenseEntries/offenseEntries.schema"
 import { Field, ObjectType, InputType } from 'type-graphql';
-import { Scorecard } from "../../scorecards/scorecards.schema"
+import { OffenseEntry } from "../offenseEntries/offenseEntries.schema"
 
 @ObjectType()
 export class BatterEntry {
     @Field()
-    id: number
+    id?: number
     @Field()
-    scorecardId: number
-    @Field(() => Scorecard)
-    scorecard?: Scorecard
+    scorecardId?: number
     @Field()
-    team: string
+    team?: string
     @Field()
-    playerNumber: number
+    playerNumber?: number
     @Field()
-    firstName: string
+    firstName?: string
     @Field()
-    lastName: string
+    lastName?: string
     @Field()
-    atBats: number
+    position?: string
     @Field()
-    runs: number
+    atBats?: number
     @Field()
-    hits: number
+    runs?: number
     @Field()
-    rbis: number
+    hits?: number
+    @Field()
+    rbis?: number
     @Field(() => [OffenseEntry])
-    offenseEntries?: OffenseEntry[]
+    offenseEntry?: OffenseEntry[]
 }
 
 @InputType()
-export class BatterEntryInput implements Partial<BatterEntry> {
+export class BatterCreateInput implements Partial<BatterEntry> {
     @Field()
-    id: number
-    @Field()
-    scorecardId!: number
+    scorecardId: number
     @Field({ nullable: true })
     team: string
     @Field({ nullable: true })
@@ -48,12 +45,18 @@ export class BatterEntryInput implements Partial<BatterEntry> {
     lastName: string
     @Field({ nullable: true })
     position: string
-    @Field({ nullable: true })
+    @Field({ defaultValue: 0 })
     atBats: number
-    @Field({ nullable: true })
+    @Field({ defaultValue: 0 })
     runs: number
-    @Field({ nullable: true })
+    @Field({ defaultValue: 0 })
     hits: number
-    @Field({ nullable: true })
+    @Field({ defaultValue: 0 })
     rbis: number
+}
+
+@InputType()
+export class BatterUpdateInput extends BatterCreateInput {
+    @Field()
+    id: number
 }
