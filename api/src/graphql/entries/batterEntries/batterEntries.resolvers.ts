@@ -35,6 +35,9 @@ export class BatterEntryResolver {
         @Arg("data") newBatterInput: BatterCreateInput,
         @Ctx() ctx: GraphQLContext): Promise<BatterEntry> {
             const result = await ctx.prisma.batterEntry.create({
+                include: {
+                    offenseEntries: true
+                },
                 data: newBatterInput
             })
             return result;
@@ -50,7 +53,6 @@ export class BatterEntryResolver {
                 },
                 data: updatedBatterInput
             })
-            // tslint:disable-next-line:no-console
             return result;
         }
 }

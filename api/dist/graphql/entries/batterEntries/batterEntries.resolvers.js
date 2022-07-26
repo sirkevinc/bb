@@ -40,8 +40,12 @@ let BatterEntryResolver = class BatterEntryResolver {
     }
     async createBatterEntry(newBatterInput, ctx) {
         const result = await ctx.prisma.batterEntry.create({
+            include: {
+                offenseEntries: true
+            },
             data: newBatterInput
         });
+        // tslint:disable-next-line:no-console
         return result;
     }
     async updateBatterEntry(updatedBatterInput, ctx) {

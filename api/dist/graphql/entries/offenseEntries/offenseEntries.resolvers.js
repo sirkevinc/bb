@@ -45,7 +45,6 @@ let OffenseEntryResolver = class OffenseEntryResolver {
             },
             data: updatedOffenseInput
         });
-        // tslint:disable-next-line:no-console
         return result;
     }
 };
@@ -70,7 +69,7 @@ __decorate([
     __param(0, (0, type_graphql_1.Arg)("data")),
     __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [offenseEntries_schema_1.OffenseEntryInput, Object]),
+    __metadata("design:paramtypes", [offenseEntries_schema_1.OffenseCreateInput, Object]),
     __metadata("design:returntype", Promise)
 ], OffenseEntryResolver.prototype, "createOffenseEntry", null);
 __decorate([
@@ -78,7 +77,7 @@ __decorate([
     __param(0, (0, type_graphql_1.Arg)("data")),
     __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [offenseEntries_schema_1.OffenseEntryInput, Object]),
+    __metadata("design:paramtypes", [offenseEntries_schema_1.OffenseUpdateInput, Object]),
     __metadata("design:returntype", Promise)
 ], OffenseEntryResolver.prototype, "updateOffenseEntry", null);
 OffenseEntryResolver = __decorate([

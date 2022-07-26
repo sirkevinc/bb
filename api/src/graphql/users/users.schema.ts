@@ -18,7 +18,7 @@ export class User {
     password!: string
     @Field()
     role!: Role
-    @Field(() => [Scorecard])
+    @Field(() => [Scorecard], { nullable: true })
     scorecards? : Scorecard[]
 }
 @ObjectType()

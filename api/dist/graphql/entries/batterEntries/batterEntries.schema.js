@@ -44,25 +44,25 @@ __decorate([
     __metadata("design:type", String)
 ], BatterEntry.prototype, "position", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ defaultValue: 0 }),
     __metadata("design:type", Number)
 ], BatterEntry.prototype, "atBats", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ defaultValue: 0 }),
     __metadata("design:type", Number)
 ], BatterEntry.prototype, "runs", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ defaultValue: 0 }),
     __metadata("design:type", Number)
 ], BatterEntry.prototype, "hits", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ defaultValue: 0 }),
     __metadata("design:type", Number)
 ], BatterEntry.prototype, "rbis", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => [offenseEntries_schema_1.OffenseEntry]),
+    (0, type_graphql_1.Field)(() => [offenseEntries_schema_1.OffenseEntry], { nullable: true }),
     __metadata("design:type", Array)
-], BatterEntry.prototype, "offenseEntry", void 0);
+], BatterEntry.prototype, "offenseEntries", void 0);
 BatterEntry = __decorate([
     (0, type_graphql_1.ObjectType)()
 ], BatterEntry);

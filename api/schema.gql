@@ -17,16 +17,16 @@ input BatterCreateInput {
 }
 
 type BatterEntry {
-  atBats: Float!
+  atBats: Float
   firstName: String!
-  hits: Float!
+  hits: Float
   id: Float!
   lastName: String!
-  offenseEntry: [OffenseEntry!]!
+  offenseEntries: [OffenseEntry!]
   playerNumber: Float!
   position: String!
-  rbis: Float!
-  runs: Float!
+  rbis: Float
+  runs: Float
   scorecardId: Float!
   team: String!
 }
@@ -62,14 +62,35 @@ scalar DateTime
 
 type Mutation {
   createBatterEntry(data: BatterCreateInput!): BatterEntry!
-  createScorecard(data: ScorecardInput!): Scorecard!
+  createOffenseEntry(data: OffenseCreateInput!): OffenseEntry!
+  createPitcherEntry(data: PitcherEntryInput!): PitcherEntry!
+  createScorecard(data: ScorecardCreateInput!): Scorecard!
+  createSumsEntry(data: SumsEntryInput!): SumsEntry!
+  createUmpireEntry(data: UmpireEntryInput!): UmpireEntry!
   createUser(data: UserInput!): User!
   deleteUser(userId: Float!): UserMessage!
   updateBatterEntry(data: BatterUpdateInput!): BatterEntry!
-  updateScorecard(data: ScorecardInput!): Scorecard!
+  updateOffenseEntry(data: OffenseUpdateInput!): OffenseEntry!
+  updatePitcherEntry(data: PitcherEntryInput!): PitcherEntry!
+  updateScorecard(data: ScorecardUpdateInput!): Scorecard!
+  updateSumsEntry(data: SumsEntryInput!): SumsEntry!
+  updateUmpireEntry(data: UmpireEntryInput!): UmpireEntry!
+}
+
+input OffenseCreateInput {
+  batterId: Float!
+  inning: Float!
+  result: String!
 }
 
 type OffenseEntry {
+  batterId: Float!
+  id: Float!
+  inning: Float!
+  result: String!
+}
+
+input OffenseUpdateInput {
   batterId: Float!
   id: Float!
   inning: Float!
@@ -95,6 +116,25 @@ type PitcherEntry {
   wls: Float!
 }
 
+input PitcherEntryInput {
+  bb: Float
+  bk: Float
+  earnedRuns: Float
+  firstName: String
+  hb: Float
+  hits: Float
+  id: Float!
+  ip: Float
+  lastName: String
+  playerNumber: Float
+  runs: Float
+  scorecardId: Float!
+  so: Float
+  tbf: Float
+  team: String
+  wls: Float
+}
+
 type Profile {
   id: Float!
   user: User!
@@ -104,34 +144,56 @@ type Profile {
 type Query {
   getBatterEntries(scorecardId: Float!): [BatterEntry!]!
   getBatterEntry(id: Float!): BatterEntry!
+  getCatcherEntries(scorecardId: Float!): [UmpireEntry!]!
+  getOffenseEntries(batterId: Float!): [OffenseEntry!]!
+  getOffenseEntry(id: Float!): OffenseEntry!
+  getPitcherEntry(id: Float!): PitcherEntry!
+  getPitchererEntries(scorecardId: Float!): [PitcherEntry!]!
   getProfile(userId: Float!): Profile!
   getScorecard(id: Float!): Scorecard!
   getScorecards(userId: Float!): [Scorecard!]!
+  getSumsEntries(scorecardId: Float!): [SumsEntry!]!
+  getSumsEntry(id: Float!): SumsEntry!
+  getUmpireEntry(id: Float!): UmpireEntry!
   getUser(id: Float!): User!
   getUsers: [User!]!
 }
 
 type Scorecard {
-  batterEntries: [BatterEntry!]!
-  catcherEntries: [CatcherEntry!]!
+  batterEntries: [BatterEntry!]
+  catcherEntries: [CatcherEntry!]
   date: DateTime!
   endTime: String!
   gameTime: String!
   home: String!
   id: Float!
   notes: String!
-  pitcherEntries: [PitcherEntry!]!
+  pitcherEntries: [PitcherEntry!]
   public: Boolean!
   startTime: String!
-  sumEntries: [SumsEntry!]!
+  sumEntries: [SumsEntry!]
   title: String!
-  umpireEntries: [UmpireEntry!]!
+  umpireEntries: [UmpireEntry!]
   userId: Float!
   visitor: String!
   weather: String!
 }
 
-input ScorecardInput {
+input ScorecardCreateInput {
+  date: DateTime
+  endTime: String
+  gameTime: String
+  home: String
+  notes: String
+  public: Boolean = true
+  startTime: String
+  title: String
+  userId: Float!
+  visitor: String
+  weather: String
+}
+
+input ScorecardUpdateInput {
   date: DateTime
   endTime: String
   gameTime: String
@@ -157,10 +219,28 @@ type SumsEntry {
   team: String!
 }
 
+input SumsEntryInput {
+  errors: Float
+  hits: Float
+  id: Float!
+  inning: Float
+  leftOnBase: Float
+  runs: Float
+  scorecardId: Float!
+  team: String
+}
+
 type UmpireEntry {
   id: Float!
   name: String!
   position: String!
+  scorecardId: Float!
+}
+
+input UmpireEntryInput {
+  id: Float!
+  name: String
+  position: String
   scorecardId: Float!
 }
 
@@ -170,7 +250,7 @@ type User {
   id: Float!
   password: String!
   role: String!
-  scorecards: [Scorecard!]!
+  scorecards: [Scorecard!]
   username: String!
 }
 

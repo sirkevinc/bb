@@ -33,22 +33,21 @@ export class Scorecard {
     gameTime?: string
     @Field()
     notes?: string
-    @Field(() => [BatterEntry])
+    @Field(() => [BatterEntry], { nullable: true })
     batterEntries?: BatterEntry[]
-    @Field(() => [PitcherEntry])
+    @Field(() => [PitcherEntry], { nullable: true })
     pitcherEntries?: PitcherEntry[]
-    @Field(() => [CatcherEntry])
+    @Field(() => [CatcherEntry], { nullable: true })
     catcherEntries?: CatcherEntry[]
-    @Field(() => [SumsEntry])
+    @Field(() => [SumsEntry], { nullable: true })
     sumEntries?: SumsEntry[]
-    @Field(() => [UmpireEntry])
+    @Field(() => [UmpireEntry], { nullable: true })
     umpireEntries?: UmpireEntry[]
+
 }
 
 @InputType()
-export class ScorecardInput implements Partial<Scorecard> {
-    @Field()
-    id: number
+export class ScorecardCreateInput implements Partial<Scorecard> {
     @Field()
     userId!: number
     @Field({ defaultValue: true })
@@ -71,4 +70,10 @@ export class ScorecardInput implements Partial<Scorecard> {
     gameTime?: string
     @Field({ nullable: true })
     notes?: string
+}
+
+@InputType()
+export class ScorecardUpdateInput extends ScorecardCreateInput {
+    @Field()
+    id: number
 }

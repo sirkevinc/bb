@@ -1,27 +1,19 @@
-// import type { GraphQLContext } from '../../context';
+import { UsersResolver } from "../users/users.resolvers"
+import { ProfileResolver } from "../profiles/profiles.resolvers"
+import { ScorecardsResolver } from '../scorecards/scorecards.resolvers'
+import { BatterEntryResolver } from '../entries/batterEntries/batterEntries.resolvers'
+import { OffenseEntryResolver } from "../entries/offenseEntries/offenseEntries.resolvers"
+import { PitcherEntryResolver } from "../entries/pitcherEntries/pitcherEntries.resolvers"
+import { UmpireEntryResolver } from "../entries/umpireEntries/umpireEntries.resolvers"
+import { SumsEntryResolver } from "../entries/sumsEntries/sumsEntries.resolvers"
 
-// export const resolvers = {
-//     Query: {
-//         allUsers: async(
-//             parent: unknown,
-//             args: {},
-//             context: GraphQLContext,
-//             ) => {
-//                 // tslint:disable-next-line:no-console
-//                 const result = await context.prisma.user.findMany();
-//                 return result;
-//         },
-//         user: async(
-//             parent: unknown,
-//             args: { id: number },
-//             context: GraphQLContext
-//         ) => {
-//             const result = await context.prisma.user.findUnique({
-//                 where: {
-//                     id: args.id
-//                 }
-//             })
-//             return result;
-//         }
-//     }
-// }
+module.exports = {
+    UsersResolver,
+    ProfileResolver,
+    ScorecardsResolver,
+    BatterEntryResolver,
+    OffenseEntryResolver,
+    PitcherEntryResolver,
+    UmpireEntryResolver,
+    SumsEntryResolver
+}

@@ -41,7 +41,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "role", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => [scorecards_schema_1.Scorecard]),
+    (0, type_graphql_1.Field)(() => [scorecards_schema_1.Scorecard], { nullable: true }),
     __metadata("design:type", Array)
 ], User.prototype, "scorecards", void 0);
 User = __decorate([

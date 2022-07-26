@@ -1,5 +1,5 @@
 import { Query, Resolver, Arg, Ctx, Mutation } from "type-graphql"
-import { Scorecard, ScorecardInput } from './scorecards.schema'
+import { Scorecard, ScorecardCreateInput, ScorecardUpdateInput } from './scorecards.schema'
 import type { GraphQLContext } from "../../context"
 
 @Resolver(() => Scorecard)
@@ -11,11 +11,15 @@ export class ScorecardsResolver {
                 userId
             },
             include: {
-                batterEntries: true,
+                batterEntries: {
+                    include: {
+                        offenseEntries: true
+                    }
+                },
                 pitcherEntries: true,
                 catcherEntries: true,
                 sumsEntries: true,
-                umpireEntries: true
+                umpireEntries: true,
             },
             orderBy: {
                 date: 'desc'
@@ -31,7 +35,11 @@ export class ScorecardsResolver {
                 id
             },
             include: {
-                batterEntries: true,
+                batterEntries: {
+                    include: {
+                        offenseEntries: true
+                    }
+                },
                 pitcherEntries: true,
                 catcherEntries: true,
                 sumsEntries: true,
@@ -43,17 +51,17 @@ export class ScorecardsResolver {
 
     @Mutation(() => Scorecard)
     async createScorecard(
-        @Arg("data") newScorecardInput: ScorecardInput,
+        @Arg("data") newScorecardInput: ScorecardCreateInput,
         @Ctx() ctx: GraphQLContext): Promise<Scorecard> {
             const result = await ctx.prisma.scorecard.create({
-                data: newScorecardInput
+                data: newScorecardInput,
             })
             return result;
         }
 
     @Mutation(() => Scorecard)
     async updateScorecard(
-        @Arg("data") updatedScorecardInput: ScorecardInput,
+        @Arg("data") updatedScorecardInput: ScorecardUpdateInput,
         @Ctx() ctx: GraphQLContext): Promise<Scorecard> {
             const result = await ctx.prisma.scorecard.update({
                 where: {

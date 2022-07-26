@@ -6,7 +6,19 @@ import type { GraphQLContext } from "../../context"
 export class UsersResolver {
     @Query(() => [User])
     async getUsers(@Ctx() ctx: GraphQLContext): Promise<User[]> {
-        const result = await ctx.prisma.user.findMany();
+        const result = await ctx.prisma.user.findMany({
+            include: {
+                scorecards: {
+                    include: {
+                        batterEntries: {
+                            include: {
+                                offenseEntries: true
+                            }
+                        }
+                    }
+                }
+            }
+        });
         return result;
     }
 
@@ -17,7 +29,15 @@ export class UsersResolver {
                 id
             },
             include: {
-                scorecards: true
+                scorecards: {
+                    include: {
+                        batterEntries: {
+                            include: {
+                                offenseEntries: true
+                            }
+                        }
+                    }
+                }
             }
         })
         return result;

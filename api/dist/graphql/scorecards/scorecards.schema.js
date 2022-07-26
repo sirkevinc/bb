@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ScorecardInput = exports.Scorecard = void 0;
+exports.ScorecardUpdateInput = exports.ScorecardCreateInput = exports.Scorecard = void 0;
 const type_graphql_1 = require("type-graphql");
 const batterEntries_schema_1 = require("../entries/batterEntries/batterEntries.schema");
 const pitcherEntries_schema_1 = require("../entries/pitcherEntries/pitcherEntries.schema");
@@ -68,81 +68,87 @@ __decorate([
     __metadata("design:type", String)
 ], Scorecard.prototype, "notes", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => [batterEntries_schema_1.BatterEntry]),
+    (0, type_graphql_1.Field)(() => [batterEntries_schema_1.BatterEntry], { nullable: true }),
     __metadata("design:type", Array)
 ], Scorecard.prototype, "batterEntries", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => [pitcherEntries_schema_1.PitcherEntry]),
+    (0, type_graphql_1.Field)(() => [pitcherEntries_schema_1.PitcherEntry], { nullable: true }),
     __metadata("design:type", Array)
 ], Scorecard.prototype, "pitcherEntries", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => [catcherEntries_schema_1.CatcherEntry]),
+    (0, type_graphql_1.Field)(() => [catcherEntries_schema_1.CatcherEntry], { nullable: true }),
     __metadata("design:type", Array)
 ], Scorecard.prototype, "catcherEntries", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => [sumsEntries_schema_1.SumsEntry]),
+    (0, type_graphql_1.Field)(() => [sumsEntries_schema_1.SumsEntry], { nullable: true }),
     __metadata("design:type", Array)
 ], Scorecard.prototype, "sumEntries", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => [umpireEntries_schema_1.UmpireEntry]),
+    (0, type_graphql_1.Field)(() => [umpireEntries_schema_1.UmpireEntry], { nullable: true }),
     __metadata("design:type", Array)
 ], Scorecard.prototype, "umpireEntries", void 0);
 Scorecard = __decorate([
     (0, type_graphql_1.ObjectType)()
 ], Scorecard);
 exports.Scorecard = Scorecard;
-let ScorecardInput = class ScorecardInput {
+let ScorecardCreateInput = class ScorecardCreateInput {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
-], ScorecardInput.prototype, "id", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", Number)
-], ScorecardInput.prototype, "userId", void 0);
+], ScorecardCreateInput.prototype, "userId", void 0);
 __decorate([
     (0, type_graphql_1.Field)({ defaultValue: true }),
     __metadata("design:type", Boolean)
-], ScorecardInput.prototype, "public", void 0);
+], ScorecardCreateInput.prototype, "public", void 0);
 __decorate([
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], ScorecardInput.prototype, "title", void 0);
+], ScorecardCreateInput.prototype, "title", void 0);
 __decorate([
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], ScorecardInput.prototype, "home", void 0);
+], ScorecardCreateInput.prototype, "home", void 0);
 __decorate([
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], ScorecardInput.prototype, "visitor", void 0);
+], ScorecardCreateInput.prototype, "visitor", void 0);
 __decorate([
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Date)
-], ScorecardInput.prototype, "date", void 0);
+], ScorecardCreateInput.prototype, "date", void 0);
 __decorate([
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], ScorecardInput.prototype, "startTime", void 0);
+], ScorecardCreateInput.prototype, "startTime", void 0);
 __decorate([
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], ScorecardInput.prototype, "endTime", void 0);
+], ScorecardCreateInput.prototype, "endTime", void 0);
 __decorate([
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], ScorecardInput.prototype, "weather", void 0);
+], ScorecardCreateInput.prototype, "weather", void 0);
 __decorate([
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], ScorecardInput.prototype, "gameTime", void 0);
+], ScorecardCreateInput.prototype, "gameTime", void 0);
 __decorate([
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], ScorecardInput.prototype, "notes", void 0);
-ScorecardInput = __decorate([
+], ScorecardCreateInput.prototype, "notes", void 0);
+ScorecardCreateInput = __decorate([
     (0, type_graphql_1.InputType)()
-], ScorecardInput);
-exports.ScorecardInput = ScorecardInput;
+], ScorecardCreateInput);
+exports.ScorecardCreateInput = ScorecardCreateInput;
+let ScorecardUpdateInput = class ScorecardUpdateInput extends ScorecardCreateInput {
+};
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], ScorecardUpdateInput.prototype, "id", void 0);
+ScorecardUpdateInput = __decorate([
+    (0, type_graphql_1.InputType)()
+], ScorecardUpdateInput);
+exports.ScorecardUpdateInput = ScorecardUpdateInput;
 //# sourceMappingURL=scorecards.schema.js.map

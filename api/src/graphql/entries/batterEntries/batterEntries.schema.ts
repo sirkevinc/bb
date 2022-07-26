@@ -27,8 +27,8 @@ export class BatterEntry {
     hits?: number
     @Field()
     rbis?: number
-    @Field(() => [OffenseEntry])
-    offenseEntry?: OffenseEntry[]
+    @Field(() => [OffenseEntry], { nullable: true })
+    offenseEntries?: OffenseEntry[]
 }
 
 @InputType()

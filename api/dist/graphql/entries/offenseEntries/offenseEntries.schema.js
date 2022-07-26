@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OffenseEntryInput = exports.OffenseEntry = void 0;
+exports.OffenseUpdateInput = exports.OffenseCreateInput = exports.OffenseEntry = void 0;
 const type_graphql_1 = require("type-graphql");
 let OffenseEntry = class OffenseEntry {
 };
@@ -34,26 +34,32 @@ OffenseEntry = __decorate([
     (0, type_graphql_1.ObjectType)()
 ], OffenseEntry);
 exports.OffenseEntry = OffenseEntry;
-let OffenseEntryInput = class OffenseEntryInput {
+let OffenseCreateInput = class OffenseCreateInput {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
-], OffenseEntryInput.prototype, "id", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", Number)
-], OffenseEntryInput.prototype, "batterId", void 0);
+], OffenseCreateInput.prototype, "batterId", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], OffenseEntryInput.prototype, "result", void 0);
+], OffenseCreateInput.prototype, "result", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
-], OffenseEntryInput.prototype, "inning", void 0);
-OffenseEntryInput = __decorate([
+], OffenseCreateInput.prototype, "inning", void 0);
+OffenseCreateInput = __decorate([
     (0, type_graphql_1.InputType)()
-], OffenseEntryInput);
-exports.OffenseEntryInput = OffenseEntryInput;
+], OffenseCreateInput);
+exports.OffenseCreateInput = OffenseCreateInput;
+let OffenseUpdateInput = class OffenseUpdateInput extends OffenseCreateInput {
+};
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], OffenseUpdateInput.prototype, "id", void 0);
+OffenseUpdateInput = __decorate([
+    (0, type_graphql_1.InputType)()
+], OffenseUpdateInput);
+exports.OffenseUpdateInput = OffenseUpdateInput;
 //# sourceMappingURL=offenseEntries.schema.js.map

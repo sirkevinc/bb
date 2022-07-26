@@ -22,11 +22,15 @@ let ScorecardsResolver = class ScorecardsResolver {
                 userId
             },
             include: {
-                batterEntries: true,
+                batterEntries: {
+                    include: {
+                        offenseEntries: true
+                    }
+                },
                 pitcherEntries: true,
                 catcherEntries: true,
                 sumsEntries: true,
-                umpireEntries: true
+                umpireEntries: true,
             },
             orderBy: {
                 date: 'desc'
@@ -40,7 +44,11 @@ let ScorecardsResolver = class ScorecardsResolver {
                 id
             },
             include: {
-                batterEntries: true,
+                batterEntries: {
+                    include: {
+                        offenseEntries: true
+                    }
+                },
                 pitcherEntries: true,
                 catcherEntries: true,
                 sumsEntries: true,
@@ -51,7 +59,7 @@ let ScorecardsResolver = class ScorecardsResolver {
     }
     async createScorecard(newScorecardInput, ctx) {
         const result = await ctx.prisma.scorecard.create({
-            data: newScorecardInput
+            data: newScorecardInput,
         });
         return result;
     }
@@ -86,7 +94,7 @@ __decorate([
     __param(0, (0, type_graphql_1.Arg)("data")),
     __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [scorecards_schema_1.ScorecardInput, Object]),
+    __metadata("design:paramtypes", [scorecards_schema_1.ScorecardCreateInput, Object]),
     __metadata("design:returntype", Promise)
 ], ScorecardsResolver.prototype, "createScorecard", null);
 __decorate([
@@ -94,7 +102,7 @@ __decorate([
     __param(0, (0, type_graphql_1.Arg)("data")),
     __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [scorecards_schema_1.ScorecardInput, Object]),
+    __metadata("design:paramtypes", [scorecards_schema_1.ScorecardUpdateInput, Object]),
     __metadata("design:returntype", Promise)
 ], ScorecardsResolver.prototype, "updateScorecard", null);
 ScorecardsResolver = __decorate([

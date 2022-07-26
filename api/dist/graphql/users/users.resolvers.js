@@ -17,7 +17,19 @@ const type_graphql_1 = require("type-graphql");
 const users_schema_1 = require("./users.schema");
 let UsersResolver = class UsersResolver {
     async getUsers(ctx) {
-        const result = await ctx.prisma.user.findMany();
+        const result = await ctx.prisma.user.findMany({
+            include: {
+                scorecards: {
+                    include: {
+                        batterEntries: {
+                            include: {
+                                offenseEntries: true
+                            }
+                        }
+                    }
+                }
+            }
+        });
         return result;
     }
     async getUser(id, ctx) {
@@ -26,7 +38,15 @@ let UsersResolver = class UsersResolver {
                 id
             },
             include: {
-                scorecards: true
+                scorecards: {
+                    include: {
+                        batterEntries: {
+                            include: {
+                                offenseEntries: true
+                            }
+                        }
+                    }
+                }
             }
         });
         return result;

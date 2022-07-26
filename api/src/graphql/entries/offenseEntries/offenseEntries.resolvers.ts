@@ -1,6 +1,6 @@
 import { Query, Resolver, Arg, Ctx, Mutation } from "type-graphql"
 import type { GraphQLContext } from "../../../context"
-import { OffenseEntry, OffenseEntryInput } from '../offenseEntries/offenseEntries.schema'
+import { OffenseEntry, OffenseCreateInput, OffenseUpdateInput } from '../offenseEntries/offenseEntries.schema'
 
 @Resolver(() => OffenseEntry)
 export class OffenseEntryResolver {
@@ -28,17 +28,16 @@ export class OffenseEntryResolver {
 
     @Mutation(() => OffenseEntry)
     async createOffenseEntry(
-        @Arg("data") newOffenseInput: OffenseEntryInput,
+        @Arg("data") newOffenseInput: OffenseCreateInput,
         @Ctx() ctx: GraphQLContext): Promise<OffenseEntry> {
             const result = await ctx.prisma.offenseEntry.create({
                 data: newOffenseInput
             })
             return result;
         }
-
     @Mutation(() => OffenseEntry)
     async updateOffenseEntry(
-        @Arg("data") updatedOffenseInput: OffenseEntryInput,
+        @Arg("data") updatedOffenseInput: OffenseUpdateInput,
         @Ctx() ctx: GraphQLContext): Promise<OffenseEntry> {
             const result = await ctx.prisma.offenseEntry.update({
                 where: {
@@ -46,7 +45,6 @@ export class OffenseEntryResolver {
                 },
                 data: updatedOffenseInput
             })
-            // tslint:disable-next-line:no-console
             return result;
         }
 }
