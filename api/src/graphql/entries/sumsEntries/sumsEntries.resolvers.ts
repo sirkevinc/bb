@@ -1,6 +1,6 @@
 import { Query, Resolver, Arg, Ctx, Mutation } from "type-graphql"
 import type { GraphQLContext } from "../../../context"
-import { SumsEntry, SumsEntryInput } from "../sumsEntries/sumsEntries.schema"
+import { SumsEntry, SumsCreateInput, SumsUpdateInput } from "../sumsEntries/sumsEntries.schema"
 
 @Resolver(() => SumsEntry)
 export class SumsEntryResolver {
@@ -28,7 +28,7 @@ export class SumsEntryResolver {
 
     @Mutation(() => SumsEntry)
     async createSumsEntry(
-        @Arg("data") newSumsInput: SumsEntryInput,
+        @Arg("data") newSumsInput: SumsCreateInput,
         @Ctx() ctx: GraphQLContext): Promise<SumsEntry> {
             const result = await ctx.prisma.sumsEntry.create({
                 data: newSumsInput
@@ -38,7 +38,7 @@ export class SumsEntryResolver {
 
     @Mutation(() => SumsEntry)
     async updateSumsEntry(
-        @Arg("data") sumsInput: SumsEntryInput,
+        @Arg("data") sumsInput: SumsUpdateInput,
         @Ctx() ctx: GraphQLContext): Promise<SumsEntry> {
             const result = await ctx.prisma.sumsEntry.update({
                 where: {

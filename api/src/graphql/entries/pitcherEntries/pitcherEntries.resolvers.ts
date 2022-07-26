@@ -1,6 +1,6 @@
 import { Query, Resolver, Arg, Ctx, Mutation } from "type-graphql"
 import type { GraphQLContext } from "../../../context"
-import { PitcherEntry, PitcherEntryInput } from "../pitcherEntries/pitcherEntries.schema"
+import { PitcherEntry, PitcherCreateInput, PitcherUpdateInput } from "../pitcherEntries/pitcherEntries.schema"
 
 @Resolver(() => PitcherEntry)
 export class PitcherEntryResolver {
@@ -28,7 +28,7 @@ export class PitcherEntryResolver {
 
     @Mutation(() => PitcherEntry)
     async createPitcherEntry(
-        @Arg("data") newPitcherInput: PitcherEntryInput,
+        @Arg("data") newPitcherInput: PitcherCreateInput,
         @Ctx() ctx: GraphQLContext): Promise<PitcherEntry> {
             const result = await ctx.prisma.pitcherEntry.create({
                 data: newPitcherInput
@@ -38,8 +38,8 @@ export class PitcherEntryResolver {
 
     @Mutation(() => PitcherEntry)
     async updatePitcherEntry(
-        @Arg("data") pitcherInput: PitcherEntryInput,
-        @Ctx() ctx: GraphQLContext): Promise<PitcherEntryInput> {
+        @Arg("data") pitcherInput: PitcherUpdateInput,
+        @Ctx() ctx: GraphQLContext): Promise<PitcherEntry> {
             const result = await ctx.prisma.pitcherEntry.update({
                 where: {
                     id: pitcherInput.id

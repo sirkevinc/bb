@@ -1,6 +1,6 @@
 import { Query, Resolver, Arg, Ctx, Mutation } from "type-graphql"
 import type { GraphQLContext } from "../../../context"
-import { CatcherEntry, CatcherEntryInput } from '../catcherEntries/catcherEntries.schema'
+import { CatcherEntry, CatcherCreateInput, CatcherUpdateInput } from '../catcherEntries/catcherEntries.schema'
 
 @Resolver(() => CatcherEntry)
 export class CatcherEntryResolver {
@@ -28,7 +28,7 @@ export class CatcherEntryResolver {
 
     @Mutation(() => CatcherEntry)
     async createCatcherEntry(
-        @Arg("data") newCatcherInput: CatcherEntryInput,
+        @Arg("data") newCatcherInput: CatcherCreateInput,
         @Ctx() ctx: GraphQLContext): Promise<CatcherEntry> {
             const result = await ctx.prisma.catcherEntry.create({
                 data: newCatcherInput
@@ -38,7 +38,7 @@ export class CatcherEntryResolver {
 
     @Mutation(() => CatcherEntry)
     async updateCatcherEntry(
-        @Arg("data") updatedCatcherInput: CatcherEntryInput,
+        @Arg("data") updatedCatcherInput: CatcherUpdateInput,
         @Ctx() ctx: GraphQLContext): Promise<CatcherEntry> {
             const result = await ctx.prisma.catcherEntry.update({
                 where: {

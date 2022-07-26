@@ -14,13 +14,19 @@ export class UmpireEntry {
     scorecardId!: number
 }
 @InputType()
-export class UmpireEntryInput implements Partial<UmpireEntry> {
+export class UmpireCreateInput implements Partial<UmpireEntry> {
     @Field({ nullable: true })
     name: string
     @Field({ nullable: true })
     position: string
     @Field()
     scorecardId!: number
+    @Field()
+    id: number
+}
+
+@InputType()
+export class UmpireUpdateInput extends UmpireCreateInput {
     @Field()
     id: number
 }

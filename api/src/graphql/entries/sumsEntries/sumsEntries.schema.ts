@@ -23,7 +23,7 @@ export class SumsEntry {
 
 }
 @InputType()
-export class SumsEntryInput implements Partial<SumsEntry> {
+export class SumsCreateInput implements Partial<SumsEntry> {
     @Field({ nullable: true })
     runs: number
     @Field({ nullable: true })
@@ -38,6 +38,12 @@ export class SumsEntryInput implements Partial<SumsEntry> {
     team: string
     @Field()
     scorecardId!: number
+    @Field()
+    id: number
+}
+
+@InputType()
+export class SumsUpdateInput extends SumsCreateInput {
     @Field()
     id: number
 }

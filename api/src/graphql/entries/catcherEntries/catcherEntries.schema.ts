@@ -21,9 +21,7 @@ export class CatcherEntry {
 }
 
 @InputType()
-export class CatcherEntryInput implements Partial<CatcherEntry> {
-    @Field()
-    id: number
+export class CatcherCreateInput implements Partial<CatcherEntry> {
     @Field({ nullable: true })
     playerNumber: number
     @Field({ nullable: true })
@@ -36,4 +34,10 @@ export class CatcherEntryInput implements Partial<CatcherEntry> {
     pb: number
     @Field()
     scorecardId!: number
+}
+
+@InputType()
+export class CatcherUpdateInput extends CatcherCreateInput {
+    @Field()
+    id: number
 }

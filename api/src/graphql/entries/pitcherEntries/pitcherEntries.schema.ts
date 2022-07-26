@@ -39,7 +39,7 @@ export class PitcherEntry {
 }
 
 @InputType()
-export class PitcherEntryInput implements Partial<PitcherEntry> {
+export class PitcherCreateInput implements Partial<PitcherEntry> {
     @Field({ nullable: true })
     playerNumber: number
     @Field({ nullable: true })
@@ -69,7 +69,11 @@ export class PitcherEntryInput implements Partial<PitcherEntry> {
     @Field({ nullable: true })
     tbf: number
     @Field()
-    id: number
-    @Field()
     scorecardId!: number
+}
+
+@InputType()
+export class PitcherUpdateInput extends PitcherCreateInput {
+    @Field()
+    id: number
 }
